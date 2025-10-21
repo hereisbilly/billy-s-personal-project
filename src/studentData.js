@@ -29,7 +29,7 @@ const initialStudentData = {
     'xie-couple': {
         name: 'Xie Siyan & Xie Sili',
         // Their module list is empty for now
-        modules: []
+        modules: ['k5-reading-writing', 'k5-counting']
     }
 };
 

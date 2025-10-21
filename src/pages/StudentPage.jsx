@@ -9,6 +9,8 @@ import { loadStudentData } from '../studentData'; // ✅ Impor data kita
 const allModules = {
     'diagnostic-quiz': { name: 'Refreshment Quiz (All Topics)' },
     'basketball-past-simple': { name: 'Module: Past Simple (Basketball)' },
+    'k5-reading-writing': { name: 'Reading & Writing Fun (K5)' },
+    'k5-counting': { name: 'Counting Adventure (K5)' },
 };
 
 const StudentPage = () => {

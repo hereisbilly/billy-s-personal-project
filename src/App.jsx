@@ -8,6 +8,8 @@ import StudentDashboard from './pages/StudentDashboard';
 import StudentPage from './pages/StudentPage';
 import BasketballPastSimplePage from './pages/BasketballPastSimplePage';
 import DanendraQuizPage from './pages/DanendraQuizPage';
+import K5ReadingWritingPage from './pages/K5ReadingWritingPage';
+import K5CountingPage from './pages/K5CountingPage';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/student/:studentId" element={<StudentPage />} />
           <Route path="/student/:studentId/module/basketball-past-simple" element={<BasketballPastSimplePage />} />
           <Route path="/student/:studentId/module/diagnostic-quiz" element={<DanendraQuizPage />} />
+          <Route path="/student/:studentId/module/k5-reading-writing" element={<K5ReadingWritingPage />} />
+          <Route path="/student/:studentId/module/k5-counting" element={<K5CountingPage />} />
         </Routes>
 
       </main>
