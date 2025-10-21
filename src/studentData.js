@@ -26,6 +26,11 @@ const initialStudentData = {
         // This student has no lessons assigned yet
         modules: []
     },
+    'xie-couple': {
+        name: 'Xie Siyan & Xie Sili',
+        // Their module list is empty for now
+        modules: []
+    }
 };
 
 // --- Helper Functions (No changes needed below) ---
