@@ -2,20 +2,18 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { WorksheetCard } from '../components/common';
-import { loadStudentData } from '../studentData'; // ✅ Impor fungsi data kita
+import { loadStudentData } from '../studentData';
 
-// Ilustrasi SVG (tetap sama)
-const SvgLearningIsFun = () => (
-    <svg viewBox="0 0 400 300" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="400" height="300" fill="none"/>
-        <g transform="translate(180, 130)"><path d="M0 0 C-30 -20, -50 20, -50 40 L50 40 C50 20, 30 -20, 0 0 Z" fill="#86EFAC"/><circle cx="-15" cy="15" r="8" fill="white"/><circle cx="15" cy="15" r="8" fill="white"/><circle cx="-15" cy="15" r="4" fill="#334155"/><circle cx="15" cy="15" r="4" fill="#334155"/><path d="M-10 25 Q 0 35, 10 25" stroke="#334155" strokeWidth="3" fill="none" strokeLinecap="round"/></g>
-        <g transform="translate(90, 180)"><circle cx="0" cy="0" r="20" fill="#F472B6"/><circle cx="-5" cy="-2" r="3" fill="white"/><circle cx="5" cy="-2" r="3" fill="white"/><circle cx="-5" cy="-2" r="1.5" fill="#334155"/><circle cx="5" cy="-2" r="1.5" fill="#334155"/><path d="M-3 5 Q 0 8, 3 5" stroke="#334155" strokeWidth="1.5" fill="none" strokeLinecap="round"/></g>
-        <g transform="translate(280, 190)"><rect x="-20" y="-20" width="40" height="40" rx="10" fill="#60A5FA"/><rect x="-10" y="-8" width="8" height="8" fill="white" rx="2"/><rect x="2" y="-8" width="8" height="8" fill="white" rx="2"/><path d="M-5 5 Q 0 8, 5 5" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round"/></g>
-        <g transform="translate(120, 80)"><rect width="50" height="60" rx="5" fill="#FDE047" stroke="#334155" strokeWidth="2"/><text x="25" y="40" textAnchor="middle" fontSize="32" fontWeight="bold" fill="#334155">A</text></g>
-        <g transform="translate(250, 70)"><circle cx="0" cy="0" r="25" fill="#FFFFFF" stroke="#D1D5DB" strokeWidth="2"/><path d="M0 -15 V 15 M -15 0 H 15" stroke="#3B82F6" strokeWidth="3"/></g>
-        <circle cx="70" cy="120" r="5" fill="#FBBF24"/><path d="M320 120 L 330 130 M 320 130 L 330 120" stroke="#F87171" strokeWidth="3" strokeLinecap="round"/><path d="M150 250 Q 160 240, 170 250" stroke="#86EFAC" strokeWidth="2" fill="none"/><path d="M155 255 Q 160 248, 165 255" stroke="#86EFAC" strokeWidth="2" fill="none"/>
-    </svg>
+// ✅ Base64 Encoded SVG for a clean, internal illustration
+// This is a simple, elegant SVG representing learning, encoded as Base64.
+// It will scale perfectly without pixelation and is embedded directly into the code.
+const Base64LearningSVG = () => (
+    <img
+        src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMzUwIDMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMzUwIiBoZWlnaHQ9IjMwMCIgZmlsbD0ibm9uZSIvPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwMCwxMzApIj4KICAgIDxwYXRoIGQ9Ik0wIDAgQy0zMCAtMjAsIC01MCAyMCwgLTUwIDQwIEw1MCA0MCBDNTAgMjAsIDMwIC0yMCwgMCAwIFoiIGZpbGw9IiNDNEU3REQiLz4KICAgIDxjaXJjbGUgY3g9Ii0xNSIgY3k9IjE1IiByPSI4IiBmaWxsPSIjRjBGNEY0Ii8+CiAgICA8Y2lyY2xlIGN4PSIxNSIgY3k9IjE1IiByPSI4IiBmaWxsPSIjRjBGNEY0Ii8+CiAgICA8Y2lyY2xlIGN4PSItMTUiIGN5PSIxNSIgcj0iNCIgZmlsbD0iIzM0MzQzNCIvPgogICAgPGNpcmNsZSBjeD0iMTUiIGN5PSIxNSIgcj0iNCIgZmlsbD0iIzM0MzQzNCIvPgogICAgPHBhdGggZD0iTS0xMCAyNSBRIDAgMzUsIDEwIDI1IiBzdHJva2U9IiMzNDM0MzQiIHN0cm9rZVdpZHRoPSIzIiBmaWxsPSJub25lIiBzdHJva2VMaW5lY2FwPSJyb3VuZCIvPgogIDwvZz4KCiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNzAsMjIwKSI+CiAgICA8cmVjdCB4PSItMTUiIHk9Ii0xNSIgd2lkdGg9IjcwIiBoZWlnaHQ9IjcwIiByeD0iMTAiIGZpbGw9IiNFMEYwRjQiIHN0cm9rZT0iI0QxRDVEOyIgc3Ryb2tlV2lkdGg9IjIiLz4KICAgIDx0ZXh0IHg9IjIwIiB5PSI0MCUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMzQzNDM0Ij5BPC90ZXh0PgogIDwvZz4KCiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjUwLDE0MCkiPgogICAgPGNpcmNsZSBjeD0iMCIgY3k9IjAiIHI9IjMwIiBmaWxsPSIjRjJGNEY0IiBzdHJva2U9IiNEQkRFRTUiIHN0cm9rZVdpZHRoPSIxLjUiLz4KICAgIDxwYXRoIGQ9Ik0wIC0xOCBWIDE4IE0gLTE4IDAgSDE4IiBzdHJva2U9IiMzRDc5QkIiIHN0cm9rZVdpZHRoPSIzIi8+CiAgPC9nPgogIAo8L3N2Zz4="
+        alt="Stylized illustration of learning elements: a friendly face, a book, and a plus sign icon."
+        className="w-full max-w-sm h-auto mx-auto lg:mx-0"
+        style={{ filter: 'drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.08))' }}
+    />
 );
 
 const StudentDashboard = () => {
@@ -26,32 +24,49 @@ const StudentDashboard = () => {
     }));
 
     return (
-        <div className="grid md:grid-cols-2 gap-8 items-center min-h-[80vh] px-4">
-            <div className="flex items-center justify-center">
-                <SvgLearningIsFun />
-            </div>
-            <div className="text-center md:text-left">
-                <h1 className="text-5xl lg:text-6xl font-extrabold text-teal-600 leading-tight">
-                    Learn English, but way more fun!
+        <div className="min-h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-br from-gray-50 via-white to-gray-100 text-gray-800 font-sans antialiased">
+            <header className="text-center mb-16 max-w-3xl">
+                <h1 className="text-6xl font-extrabold leading-tight tracking-tight text-gray-900 drop-shadow-sm">
+                    Elevate Your English
                 </h1>
-                <h2 className="text-2xl font-semibold text-slate-500 mt-3">
-                    by Billy Dwi Nugroho
-                </h2>
-                <p className="text-xl text-slate-500 mt-8 mb-10">
-                    Choose a student profile to begin their learning journey.
+                <p className="mt-4 text-2xl text-gray-600">
+                    Interactive modules designed for engaging and effective learning.
                 </p>
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-                    {students.map(student => (
-                        <Link 
-                            key={student.id} 
-                            to={`/student/${student.id}`}
-                            className="p-5 bg-green-500 text-white font-bold text-xl text-center rounded-xl shadow-lg border-b-4 border-green-700 hover:bg-green-600 transition-all transform hover:-translate-y-1"
-                        >
-                            {student.name}
-                        </Link>
-                    ))}
+                <p className="mt-2 text-md text-gray-500">
+                    by Billy Dwi Nugroho
+                </p>
+            </header>
+
+            <section className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl w-full">
+                {/* Left Section: Illustration */}
+                <div className="flex justify-center lg:justify-end">
+                    <Base64LearningSVG />
                 </div>
-            </div>
+
+                {/* Right Section: Student Selection */}
+                <div className="text-center lg:text-left">
+                    <h2 className="text-3xl font-semibold text-gray-700 mb-6">
+                        Select a Student Profile
+                    </h2>
+                    <p className="text-lg text-gray-500 mb-8 max-w-md lg:max-w-none">
+                        Choose a student from the list to continue their personalized learning journey.
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg lg:max-w-none mx-auto lg:mx-0">
+                        {students.map(student => (
+                            <Link
+                                key={student.id}
+                                to={`/student/${student.id}`}
+                                className="block p-4 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-semibold text-lg text-center rounded-xl shadow-lg
+                                           hover:from-blue-700 hover:to-indigo-800 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105
+                                           focus:outline-none focus:ring-4 focus:ring-indigo-300 active:scale-98"
+                                aria-label={`Go to ${student.name}'s profile`}
+                            >
+                                {student.name}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };
