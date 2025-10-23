@@ -2,76 +2,154 @@
 
 import React, { useState } from 'react';
 import { WorksheetCard, BigButton } from '../components/common';
-import TTSButton from '../components/TTSButton'
+import { useNavigate } from 'react-router-dom';
+import TTSButton from '../components/TTSButton'; // The new TTS component
 
 // --- Ikon & SVG ---
 const IconBasketball = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M9 21a9 9 0 01-4.97-17.38M15 3a9 9 0 014.97 17.38" /><path strokeLinecap="round" strokeLinejoin="round" d="M3 12h18" /><path strokeLinecap="round" strokeLinejoin="round" d="M17.38 4.97A9.002 9.002 0 0121 12M3 12a9.002 9.002 0 013.62-7.03" /></svg>;
-const SectionHeader = ({ icon, title, subtitle, color = "green" }) => {
-    const colors = {
-        green: "from-green-500 to-emerald-500",
-        blue: "from-blue-500 to-sky-500",
-        violet: "from-violet-500 to-purple-500"
-    };
-    return ( <div className={`flex items-center p-4 bg-gradient-to-r ${colors[color]} rounded-xl shadow-lg mb-6`}> <div className="flex-shrink-0 bg-white bg-opacity-20 p-3 rounded-full mr-4">{icon}</div> <div> <h2 className="text-2xl font-bold text-white">{title}</h2> <p className="text-green-100">{subtitle}</p> </div> </div> );
-};
+const SectionHeader = ({ icon, title, subtitle }) => ( <div className="flex items-center p-4 bg-gradient-to-r from-orange-500 to-amber-500 rounded-xl shadow-lg mb-6"> <div className="flex-shrink-0 bg-white bg-opacity-20 p-3 rounded-full mr-4">{icon}</div> <div> <h2 className="text-2xl font-bold text-white">{title}</h2> <p className="text-amber-100">{subtitle}</p> </div> </div> );
 
-// --- Ilustrasi SVG Kustom ---
-const SvgBasketballTimeline = () => ( <svg viewBox="0 0 200 80" className="w-full my-4 h-auto"><line x1="10" y1="40" x2="190" y2="40" stroke="#9ca3af" strokeWidth="2" markerEnd="url(#arrow)" /><defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#9ca3af" /></marker></defs><g transform="translate(50 40)"><circle r="6" fill="#F87171"/><text y="25" textAnchor="middle" fontSize="10" fill="#EF4444" fontWeight="bold">Yesterday</text><g transform="translate(0 -20)"><circle r="8" fill="#F97316"/><line x1="-5" y1="0" x2="5" y2="0" stroke="white" strokeWidth="1"/><line x1="0" y1="-5" x2="0" y2="5" stroke="white" strokeWidth="1"/><path d="M0 -8 A 8 8 0 0 1 0 8" stroke="white" strokeWidth="1"/><path d="M0 -8 A 8 8 0 0 0 0 8" stroke="white" strokeWidth="1"/></g></g><g transform="translate(170 40)"><circle r="7" fill="#22C55E" stroke="white" strokeWidth="2"/><text y="25" textAnchor="middle" fontSize="10" fill="#16A34A" fontWeight="bold">Now</text></g></svg> );
-const SvgReadingIllustration = () => ( <svg viewBox="0 0 200 150" className="w-full md:w-64 h-auto rounded-lg flex-shrink-0"><rect width="200" height="150" fill="#F0FDF4"/><path d="M20 130 H 180" stroke="#A7F3D0" strokeWidth="4" strokeLinecap="round"/><circle cx="50" cy="70" r="15" fill="#FBBF24"/><rect x="35" y="80" width="30" height="40" rx="5" fill="#60A5FA"/><path d="M40 65 Q 50 60, 60 65" stroke="#1F2937" strokeWidth="1.5"/><circle cx="150" cy="70" r="15" fill="#FDE047"/><rect x="135" y="80" width="30" height="40" rx="5" fill="#F87171"/><path d="M140 65 Q 150 60, 160 65" stroke="#1F2937" strokeWidth="1.5"/><circle cx="100" cy="30" r="10" fill="#F97316"/><path d="M100 40 V 60 L 80 75 M100 40 V 60 L 120 75" stroke="#F97316" strokeWidth="3" fill="none" strokeLinecap="round"/></svg> );
-const SvgCoachSpeaking = () => ( <svg viewBox="0 0 100 80" className="w-40 h-32 mx-auto mb-4 text-violet-500"><rect width="100" height="80" fill="#F5F3FF" rx="10"/><g transform="translate(50 40)"><path d="M-30 -20 a10 10 0 0 1 10 -10 h 40 a10 10 0 0 1 10 10 v 20 a10 10 0 0 1 -10 10 h -40 a10 10 0 0 1 -10 -10z" fill="#FFFFFF" stroke="#D1D5DB" strokeWidth="2"/><path d="M-10 -5 h20 M-10 5 h20 M-10 15 h10" stroke="#A78BFA" strokeWidth="2" strokeLinecap="round"/><path d="M-30 0 L-35 5 L-30 10 Z" fill="#FFFFFF" stroke="#D1D5DB" strokeWidth="2"/></g><g transform="translate(15 25)"><circle cx="0" cy="0" r="10" fill="#FDE047"/><path d="M-10 10 C -10 20, 10 20, 10 10" fill="#C4B5FD"/><path d="M-5 -2 Q 0 2, 5 -2" stroke="#334155" strokeWidth="1.5" fill="none" strokeLinecap="round"/></g></svg> );
-const SvgDribbled = () => <svg viewBox="0 0 100 100" className="w-20 h-20 mx-auto mb-2"><rect width="100" height="100" fill="#F0F9FF" rx="10"/><circle cx="50" cy="40" r="10" fill="#FDE047"/><path d="M40 50 C 40 65, 60 65, 60 50" fill="#334155"/><path d="M30 50 L 70 50" stroke="#334155" strokeWidth="3" strokeLinecap="round"/><circle cx="50" cy="85" r="8" fill="#F97316"/><path d="M50 77 V 60" stroke="#F97316" strokeWidth="2" strokeDasharray="3"/></svg>;
-const SvgPassed = () => <svg viewBox="0 0 100 100" className="w-20 h-20 mx-auto mb-2"><rect width="100" height="100" fill="#F0F9FF" rx="10"/><circle cx="30" cy="50" r="10" fill="#FDE047"/><path d="M20 60 C 20 75, 40 75, 40 60" fill="#334155"/><circle cx="70" cy="50" r="10" fill="#86EFAC"/><path d="M60 60 C 60 75, 80 75, 80 60" fill="#334155"/><path d="M40 50 L 60 50" stroke="#F97316" strokeWidth="3" strokeDasharray="5"/><path d="M55 45 L 60 50 L 55 55 Z" fill="#F97316"/></svg>;
-const SvgWon = () => <svg viewBox="0 0 100 100" className="w-20 h-20 mx-auto mb-2"><rect width="100" height="100" fill="#F0F9FF" rx="10"/><path d="M30 40 L 70 40 L 65 80 L 35 80 Z" fill="#FDE047" stroke="#EAB308" strokeWidth="2"/><circle cx="50" cy="30" r="10" fill="#FDE047"/><path d="M30 20 L 70 20" stroke="#EAB308" strokeWidth="3" strokeLinecap="round"/><circle cx="40" cy="50" r="3" fill="#EAB308"/><circle cx="60" cy="50" r="3" fill="#EAB308"/><text x="50" y="70" textAnchor="middle" fontSize="12" fill="#334155" fontWeight="bold">#1</text></svg>;
-const SvgScored = () => <svg viewBox="0 0 100 100" className="w-20 h-20 mx-auto mb-2"><rect width="100" height="100" fill="#F0F9FF" rx="10"/><ellipse cx="50" cy="65" rx="20" ry="8" fill="none" stroke="#F97316" strokeWidth="3"/><path d="M30 65 L 35 90 L 65 90 L 70 65" fill="none" stroke="#F97316" strokeWidth="2"/><circle cx="50" cy="30" r="10" fill="#F97316"/><path d="M50 40 V 55" stroke="#F97316" strokeWidth="2" strokeDasharray="3"/><text x="50" y="20" textAnchor="middle" fontSize="12" fill="#334155" fontWeight="bold">3 PTS</text></svg>;
-const SvgJumped = () => <svg viewBox="0 0 100 100" className="w-20 h-20 mx-auto mb-2"><rect width="100" height="100" fill="#F0F9FF" rx="10"/><circle cx="50" cy="40" r="10" fill="#FDE047"/><path d="M40 50 C 40 65, 60 65, 60 50" fill="#334155"/><path d="M40 65 Q 50 55, 60 65" stroke="#334155" strokeWidth="3" strokeLinecap="round"/><path d="M30 80 Q 50 70, 70 80" stroke="#3B82F6" strokeWidth="3" fill="none" strokeLinecap="round"/><path d="M35 85 Q 50 75, 65 85" stroke="#3B82F6" strokeWidth="3" fill="none" strokeLinecap="round"/></svg>;
-const SvgShouted = () => <svg viewBox="0 0 100 100" className="w-20 h-20 mx-auto mb-2"><rect width="100" height="100" fill="#F0F9FF" rx="10"/><circle cx="50" cy="50" r="15" fill="#FDE047"/><path d="M35 65 C 35 80, 65 80, 65 65" fill="#334155"/><path d="M45 45 Q 50 40, 55 45" stroke="#334155" strokeWidth="1.5"/><path d="M40 55 C 50 65, 60 55" stroke="#334155" strokeWidth="2" fill="none" strokeLinecap="round"/><path d="M65 40 L 75 30 M70 45 L 80 35 M75 50 L 85 40" stroke="#3B82F6" strokeWidth="3" strokeLinecap="round"/></svg>;
-const SvgWatched = () => <svg viewBox="0 0 100 100" className="w-20 h-20 mx-auto mb-2"><rect width="100" height="100" fill="#F0F9FF" rx="10"/><rect x="20" y="40" width="60" height="40" rx="5" fill="#334155"/><rect x="25" y="45" width="50" height="30" fill="#86EFAC"/><circle cx="50" cy="25" r="8" fill="#FDE047"/><path d="M42 33 C 42 40, 58 40, 58 33" fill="#334155"/><path d="M40 20 L 60 20" stroke="#FBBF24" strokeWidth="2"/></svg>;
-const SvgFelt = () => <svg viewBox="0 0 100 100" className="w-20 h-20 mx-auto mb-2"><rect width="100" height="100" fill="#F0F9FF" rx="10"/><circle cx="50" cy="50" r="20" fill="#FDE047"/><path d="M40 45 Q 50 40, 60 45" stroke="#334155" strokeWidth="2"/><path d="M40 55 Q 50 65, 60 55" stroke="#334155" strokeWidth="2" strokeLinecap="round"/><text x="75" y="35" textAnchor="middle" fontSize="12" fill="#EF4444" fontWeight="bold">Zzz</text></svg>;
-const SvgCatch = () => <svg viewBox="0 0 100 100" className="w-20 h-20 mx-auto mb-2"><rect width="100" height="100" fill="#F0F9FF" rx="10"/><circle cx="70" cy="30" r="8" fill="#F97316"/><path d="M60 30 L 40 40" stroke="#F97316" strokeWidth="2" strokeDasharray="3"/><path d="M20 50 C 20 40, 35 40, 35 50" fill="#FDE047"/><path d="M15 60 C 15 75, 40 75, 40 60" fill="#334155"/><path d="M20 40 L 40 40" stroke="#334155" strokeWidth="3" strokeLinecap="round"/><line x1="20" y1="20" x2="80" y2="80" stroke="#EF4444" strokeWidth="4" strokeLinecap="round"/><line x1="20" y1="80" x2="80" y2="20" stroke="#EF4444" strokeWidth="4" strokeLinecap="round"/></svg>;
-const SvgPractice = () => <svg viewBox="0 0 100 100" className="w-20 h-20 mx-auto mb-2"><rect width="100" height="100" fill="#F0F9FF" rx="10"/><rect x="70" y="20" width="10" height="30" fill="#334155"/><ellipse cx="75" cy="53" rx="10" ry="4" fill="none" stroke="#F97316" strokeWidth="2"/><path d="M65 55 L 70 70 L 80 70 L 85 55" fill="none" stroke="#F97316" strokeWidth="1.5"/><circle cx="30" cy="50" r="10" fill="#FDE047"/><path d="M20 60 C 20 75, 40 75, 40 60" fill="#334155"/><text x="50" y="85" textAnchor="middle" fontSize="12" fill="#3B82F6" fontWeight="bold">?</text></svg>;
+// --- Ilustrasi SVG Kustom untuk Tema Bola Basket ---
+const SvgBasketballTimeline = () => ( <svg viewBox="0 0 200 60" className="w-full my-4 h-auto"><line x1="10" y1="30" x2="190" y2="30" stroke="#9ca3af" strokeWidth="2" markerEnd="url(#arrow)" /><defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#9ca3af" /></marker></defs><g transform="translate(40 30)"><circle r="5" fill="#f87171"/><path d="M-15 -20 L 0 -5 L 15 -20" stroke="#ef4444" strokeWidth="2" fill="none" strokeLinecap="round"/><text y="20" textAnchor="middle" fontSize="8" fill="#ef4444" fontWeight="bold">Yesterday</text></g><g transform="translate(170 30)"><circle r="6" fill="#22c55e" stroke="white" strokeWidth="2"/><text y="20" textAnchor="middle" fontSize="8" fill="#16a34a" fontWeight="bold">Now</text></g></svg> );
+const SvgReadingIllustration = () => ( <svg viewBox="0 0 200 150" className="w-full h-auto rounded-lg mb-4 md:float-right md:w-1/3 ml-4"><rect width="200" height="150" fill="#FFF7ED"/><path d="M20 130 H 180" stroke="#FDBA74" strokeWidth="4" strokeLinecap="round"/><circle cx="50" cy="70" r="15" fill="#FBBF24"/><rect x="35" y="80" width="30" height="40" rx="5" fill="#0284C7"/><path d="M40 65 Q 50 60, 60 65" stroke="#1F2937" strokeWidth="1.5"/><circle cx="150" cy="70" r="15" fill="#FDE047"/><rect x="135" y="80" width="30" height="40" rx="5" fill="#DC2626"/><path d="M140 65 Q 150 60, 160 65" stroke="#1F2937" strokeWidth="1.5"/><circle cx="100" cy="30" r="10" fill="#F97316"/><path d="M100 40 V 60 L 80 75 M100 40 V 60 L 120 75" stroke="#F97316" strokeWidth="3" fill="none" strokeLinecap="round"/></svg> );
+const SvgWritingIllustration = () => ( <svg viewBox="0 0 100 60" className="w-full h-24 mx-auto mb-4 text-slate-300"><path d="M30 50 L70 10" stroke="currentColor" strokeWidth="4" strokeLinecap="round" /><path d="M65 5 L 70 10 L 60 15 Z" fill="currentColor" /><rect x="20" y="20" width="60" height="40" fill="#f1f5f9" rx="3"/><path d="M25 25h50 M25 35h50 M25 45h30" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg> );
+const SvgListeningSpeaking = () => ( <svg viewBox="0 0 100 60" className="w-24 h-24 mx-auto mb-4 text-amber-500"><circle cx="30" cy="20" r="8" fill="currentColor"/><path d="M22 28 C 22 40 38 40 38 28" fill="currentColor"/><circle cx="70" cy="20" r="8" fill="currentColor"/><path d="M62 28 C 62 40 78 40 78 28" fill="currentColor"/><path d="M40 30 Q 50 15, 60 30" stroke="currentColor" strokeWidth="2" fill="none"/><path d="M42 35 Q 50 45, 58 35" stroke="currentColor" strokeWidth="2" fill="none"/></svg> );
+const SvgHoop = () => ( <svg viewBox="0 0 100 60" className="w-full h-auto max-w-xs mx-auto"><rect x="40" y="5" width="20" height="15" fill="white" stroke="#334155" strokeWidth="2"/><line x1="50" y1="20" x2="50" y2="25" stroke="#334155" strokeWidth="2"/><ellipse cx="50" cy="28" rx="15" ry="5" fill="none" stroke="#F97316" strokeWidth="3"/><path d="M35 30 L 40 50 L 60 50 L 65 30" fill="none" stroke="#F97316" strokeWidth="2" strokeLinecap="round"/></svg> );
+const SvgReview = () => ( <svg viewBox="0 0 100 60" className="w-24 h-24 mx-auto text-slate-400"><rect x="20" y="10" width="60" height="45" rx="3" fill="#f1f5f9"/><path d="M30 20 l10 10 m-10 0 l10 -10" stroke="#ef4444" strokeWidth="3" strokeLinecap="round"/><path d="M30 40 l10 10 l20 -20" stroke="#22c55e" strokeWidth="3" fill="none" strokeLinecap="round"/><path d="M50 25 h30 M50 45 h30" stroke="currentColor" strokeWidth="2"/></svg> );
+
 
 const BasketballPastSimplePage = () => {
-    // ... (Your existing state and logic functions)
     const navigate = useNavigate();
     const [readingAnswers, setReadingAnswers] = useState({ q1: '', q2: '', q3: '', q4: '', q5: '' });
     const [readingFeedback, setReadingFeedback] = useState({});
-    const [jumbledAnswers, setJumbledAnswers] = useState({});
-    const [jumbledFeedback, setJumbledFeedback] = useState({});
-    const [gameState, setGameState] = useState({ currentIndex: 0, selectedAnswer: null, feedback: null, userAnswers: [] });
-    const [gameFinished, setGameFinished] = useState(false);
-    const [reviewState, setReviewState] = useState({ currentIndex: 0, selectedAnswer: null, feedback: null, userAnswers: [] });
-    const [quizFinished, setQuizFinished] = useState(false);
+    const [gameInput, setGameInput] = useState('');
+    const [gameFeedback, setGameFeedback] = useState('');
+    const [currentGameVerbIndex, setCurrentGameVerbIndex] = useState(0);
 
     const story = "Last Saturday, our school basketball team played in the final match. The game started at 4 PM. In the first half, the other team scored ten points quickly. Our team did not give up. Our best player, Budi, passed the ball to Adi. Adi jumped high and scored a three-point basket! The crowd shouted with excitement. We won the game by one point in the last second. It was an amazing day.";
     const readingQuestions = [ { id: 'q1', question: "When did the team play?", keywords: ['last saturday'] }, { id: 'q2', question: "What did the other team do in the first half?", keywords: ['scored', 'ten', 'points'] }, { id: 'q3', question: "Who passed the ball to Adi?", keywords: ['budi'] }, { id: 'q4', question: "What did Adi do?", keywords: ['jumped', 'scored', 'three-point'] }, { id: 'q5', question: "How did the crowd feel?", keywords: ['shouted', 'excitement'] } ];
-    const jumbledWordsData = [ { id: 1, jumbled: "dribbled / the ball / he", answer: "He dribbled the ball.", svg: <SvgDribbled /> }, { id: 2, jumbled: "she / to her friend / passed", answer: "She passed to her friend.", svg: <SvgPassed /> }, { id: 3, jumbled: "the game / won / the team", answer: "The team won the game.", svg: <SvgWon /> }, { id: 4, jumbled: "I / three baskets / scored", answer: "I scored three baskets.", svg: <SvgScored /> }, { id: 5, jumbled: "jumped / for the rebound / he", answer: "He jumped for the rebound.", svg: <SvgJumped /> }, { id: 6, jumbled: "the coach / shouted / instructions", answer: "The coach shouted instructions.", svg: <SvgShouted /> }, { id: 7, jumbled: "we / the match / watched", answer: "We watched the match.", svg: <SvgWatched /> }, { id: 8, jumbled: "the players / tired / felt", answer: "The players felt tired.", svg: <SvgFelt /> }, { id: 9, jumbled: "he / did not / the ball / catch", answer: "He did not catch the ball.", svg: <SvgCatch /> }, { id: 10, jumbled: "did / practice / you / yesterday?", answer: "Did you practice yesterday?", svg: <SvgPractice /> } ];
-    const gameQuizData = [ { q: "The player (run) ___ very fast.", o: ["run", "ran", "runs"], a: "ran" }, { q: "He (throw) ___ the ball and scored.", o: ["threw", "throwed", "throws"], a: "threw" }, { q: "We (see) ___ a great game.", o: ["see", "saw", "sees"], a: "saw" }, { q: "She (feel) ___ happy after winning.", o: ["feel", "felt", "feels"], a: "felt" }, { q: "They (win) ___ the match.", o: ["win", "won", "wins"], a: "won" }, { q: "I (jump) ___ for the ball.", o: ["jump", "jumped", "jumps"], a: "jumped" }, { q: "He (pass) ___ the ball to me.", o: ["pass", "passed", "passes"], a: "passed" }, { q: "The game (start) ___ at 3 PM.", o: ["start", "started", "starts"], a: "started" }, { q: "She (play) ___ for the school team.", o: ["play", "played", "plays"], a: "played" }, { q: "We (watch) ___ the finals on TV.", o: ["watch", "watched", "watches"], a: "watched" } ];
-    const reviewQuizData = [ { q: "He ___ the ball to his teammate.", o: ["pass", "passed", "passes"], a: "passed" }, { q: "They ___ the championship last year.", o: ["win", "wins", "won"], a: "won" }, { q: "I ___ to practice yesterday.", o: ["go", "goes", "went"], a: "went" }, { q: "She ___ three-pointers in the game.", o: ["score", "scored", "scores"], a: "scored" }, { q: "We ___ very tired after the match.", o: ["feel", "felt", "feels"], a: "felt" }, { q: "The referee ___ the whistle.", o: ["blow", "blew", "blows"], a: "blew" }, { q: "He ___ not play in the first half.", o: ["did", "do", "does"], a: "did" }, { q: "___ you see the amazing dunk?", o: ["Do", "Does", "Did"], a: "Did" }, { q: "The crowd ___ crazy.", o: ["go", "went", "goes"], a: "went" }, { q: "I ___ a new pair of basketball shoes.", o: ["buy", "bought", "buys"], a: "bought" }, { q: "The coach ___ a new strategy.", o: ["teach", "teached", "taught"], a: "taught" }, { q: "The player ___ the ball.", o: ["catch", "catched", "caught"], a: "caught" }, { q: "We ___ a lot of water during the break.", o: ["drink", "drank", "drinks"], a: "drank" }, { q: "He ___ very fast on the court.", o: ["run", "ran", "runs"], a: "ran" }, { q: "She ___ not miss the free throw.", o: ["did", "do", "does"], a: "did" }, { q: "___ the team celebrate after the game?", o: ["Do", "Does", "Did"], a: "Did" }, { q: "I ___ about the game on TV.", o: ["hear", "heard", "hears"], a: "heard" }, { q: "The star player ___ an award.", o: ["get", "got", "gets"], a: "got" }, { q: "We ___ home late that night.", o: ["come", "came", "comes"], a: "came" }, { q: "It ___ an unforgettable match.", o: ["is", "were", "was"], a: "was" } ];
-
+    const gameVerbs = [{ p: 'play', a: 'played' }, { p: 'start', a: 'started' }, { p: 'score', a: 'scored' }, { p: 'pass', a: 'passed' }, { p: 'jump', a: 'jumped' }, { p: 'shout', a: 'shouted' }, { p: 'win', a: 'won' }, { p: 'feel', a: 'felt' }];
+    
     const handleReadingAnswerChange = (id, value) => setReadingAnswers(prev => ({ ...prev, [id]: value }));
     const checkReadingAnswer = (id) => { const question = readingQuestions.find(q => q.id === id); const userAnswer = readingAnswers[id].toLowerCase(); const isCorrect = question.keywords.every(keyword => userAnswer.includes(keyword)); setReadingFeedback(prev => ({ ...prev, [id]: isCorrect ? 'correct' : 'incorrect' })); };
-    const handleJumbledAnswerChange = (id, value) => setJumbledAnswers(prev => ({ ...prev, [id]: value }));
-    const checkJumbledAnswer = (id) => { const q = jumbledWordsData.find(item => item.id === id); const userAnswer = jumbledAnswers[id]?.trim().replace(/\.$/, "").toLowerCase(); const correctAnswer = q.answer.replace(/\.$/, "").toLowerCase(); setJumbledFeedback(prev => ({ ...prev, [id]: userAnswer === correctAnswer ? 'correct' : 'incorrect' })); };
-    const handleGameAnswer = (option) => { if (gameState.feedback) return; const isCorrect = option === gameQuizData[gameState.currentIndex].a; setGameState(prev => ({ ...prev, selectedAnswer: option, feedback: isCorrect ? 'correct' : 'incorrect', userAnswers: [...prev.userAnswers, { ...gameQuizData[prev.currentIndex], userAnswer: option, isCorrect }] })); };
-    const handleNextGameQuestion = () => { if (gameState.currentIndex < gameQuizData.length - 1) { setGameState(prev => ({ ...prev, currentIndex: prev.currentIndex + 1, selectedAnswer: null, feedback: null })); } else { setGameFinished(true); } };
-    const handleReviewAnswer = (option) => { if (reviewState.feedback) return; const isCorrect = option === reviewQuizData[reviewState.currentIndex].a; setReviewState(prev => ({ ...prev, selectedAnswer: option, feedback: isCorrect ? 'correct' : 'incorrect', userAnswers: [...prev.userAnswers, { ...reviewQuizData[prev.currentIndex], userAnswer: option, isCorrect }] })); };
-    const handleNextReviewQuestion = () => { if (reviewState.currentIndex < reviewQuizData.length - 1) { setReviewState(prev => ({ ...prev, currentIndex: prev.currentIndex + 1, selectedAnswer: null, feedback: null })); } else { setQuizFinished(true); } };
+    const checkGameAnswer = () => { const currentVerb = gameVerbs[currentGameVerbIndex]; if (gameInput.trim().toLowerCase() === currentVerb.a) { setGameFeedback('Swish! Correct!'); } else { setGameFeedback(`Miss! The correct answer is: ${currentVerb.a}`); } };
+    const nextGameVerb = () => { if (currentGameVerbIndex < gameVerbs.length - 1) { setCurrentGameVerbIndex(prev => prev + 1); setGameInput(''); setGameFeedback(''); } else { setGameFeedback('Game Over! Great job!'); } };
 
     return (
-        <div className="max-w-4xl mx-auto space-y-12">
-            <h1 className="text-4xl font-extrabold text-slate-800 text-center">Past Simple: Basketball Edition <span className="text-green-500">for Danendra</span></h1>
+        <div className="space-y-12">
+            <section id="definition">
+                <SectionHeader icon={<IconBasketball />} title="1. Past Simple: Basketball Edition" subtitle="For Danendra Marta" />
+                <WorksheetCard>
+                    <div className="grid md:grid-cols-2 gap-6 items-center">
+                        <div>
+                            <p className="text-lg leading-relaxed mb-4">We use the Past Simple to talk about actions that are <strong className="text-orange-600">finished</strong>. For basketball, we can describe a game that already happened.</p>
+                            <div className="grid grid-cols-1 gap-4 text-center">
+                                <div className="p-4 bg-green-50 rounded-lg"><h3 className="font-bold text-green-800">Affirmative (+)</h3><p>"I <strong className="bg-green-200 px-1">played</strong> basketball yesterday."</p></div>
+                                <div className="p-4 bg-red-50 rounded-lg"><h3 className="font-bold text-red-800">Negative (-)</h3><p>"I <strong className="bg-red-200 px-1">did not play</strong> yesterday."</p></div>
+                                <div className="p-4 bg-blue-50 rounded-lg"><h3 className="font-bold text-blue-800">Question (?)</h3><p>"<strong className="bg-blue-200 px-1">Did you play</strong> yesterday?"</p></div>
+                            </div>
+                        </div>
+                        <div><SvgBasketballTimeline /></div>
+                    </div>
+                </WorksheetCard>
+            </section>
+
+            <section id="reading">
+                <SectionHeader icon={<IconBasketball />} title="2. Reading: The Final Match" subtitle="Read the story and answer the questions" />
+                <WorksheetCard>
+                    <div className="md:flex md:gap-8 items-start">
+                        <div className="flex-1">
+                            <div className="flex items-start gap-4 mb-6">
+                                <TTSButton text={story.replace(/<[^>]+>/g, '')} />
+                                <p className="text-lg text-slate-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: story.replace(/\b(played|started|scored|did not give up|passed|jumped|shouted|won|was)\b/g, '<strong class="text-orange-600 font-semibold">$&</strong>') }} />
+                            </div>
+                        </div>
+                        <div className="flex-shrink-0 w-full md:w-56"><SvgReadingIllustration /></div>
+                    </div>
+
+                    <h3 className="text-2xl font-bold text-slate-800 mt-8 mb-4 clear-both pt-2">Answer the questions:</h3>
+                    <div className="space-y-4">
+                        {readingQuestions.map(q => (
+                            <div key={q.id}>
+                                <label htmlFor={q.id} className="font-semibold text-slate-700">{q.question}</label>
+                                <div className="flex items-center space-x-2 mt-1">
+                                    <input type="text" id={q.id} value={readingAnswers[q.id]} onChange={(e) => handleReadingAnswerChange(q.id, e.target.value)} className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:outline-none" placeholder="Type your answer here..." disabled={!!readingFeedback[q.id]} />
+                                    <button onClick={() => checkReadingAnswer(q.id)} disabled={!!readingFeedback[q.id]} className="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 disabled:bg-slate-300">Check</button>
+                                </div>
+                                {readingFeedback[q.id] && (<p className={`mt-1 text-sm font-bold ${readingFeedback[q.id] === 'correct' ? 'text-green-600' : 'text-red-600'}`}> {readingFeedback[q.id] === 'correct' ? '✓ Correct! Good job.' : '✗ Not quite, try again or check the story.'} </p>)}
+                            </div>
+                        ))}
+                    </div>
+                </WorksheetCard>
+            </section>
             
-            <WorksheetCard> <SectionHeader icon={<IconBasketball />} title="1. Definition & Grammar" subtitle="Understanding the Past Simple" /> <div className="grid md:grid-cols-2 gap-8 items-center"><div> <p className="text-lg text-slate-700 leading-relaxed mb-6">We use Past Simple for actions that are <strong className="text-green-600">finished</strong>. For basketball, we describe a game that already happened.</p> <div className="space-y-4"> <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-400"><h4 className="font-bold text-green-800">Affirmative (+)</h4><p className="text-slate-600">"I <strong className="font-semibold">played</strong> basketball."</p></div> <div className="p-4 bg-red-50 rounded-lg border-l-4 border-red-400"><h4 className="font-bold text-red-800">Negative (-)</h4><p className="text-slate-600">"I <strong className="font-semibold">did not play</strong>."</p></div> <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400"><h4 className="font-bold text-blue-800">Question (?)</h4><p className="text-slate-600">"<strong className="font-semibold">Did you play</strong>?"</p></div> </div> </div> <div><SvgBasketballTimeline /></div> </div> </WorksheetCard>
-            <WorksheetCard> <SectionHeader icon={<IconBasketball />} title="2. Reading: The Final Match" subtitle="Read the story and answer the questions" /> <div className="md:flex md:gap-8"> <div className="flex-1"> <p className="text-lg text-slate-700 leading-relaxed mb-6" dangerouslySetInnerHTML={{ __html: story.replace(/\b(played|started|scored|did not give up|passed|jumped|shouted|won|was)\b/g, '<strong class="text-green-600 font-semibold">$&</strong>') }} /> <TTSButton text={story.replace(/<[^>]+>/g, '')} />
-                            <p 
-                                className="text-lg text-slate-700 leading-relaxed" 
-                                dangerouslySetInnerHTML={{ __html: story.replace(/\b(played|...)\b/g, '<strong class="text-green-600 font-semibold">$&</strong>') }} 
-                            /></div> <div className="flex-shrink-0 w-full md:w-56"><SvgReadingIllustration /></div> </div> <h3 className="text-2xl font-bold text-slate-800 mt-8 mb-4">Answer the questions:</h3> <div className="space-y-4"> {readingQuestions.map(q => ( <div key={q.id}> <label htmlFor={q.id} className="font-semibold text-slate-700">{q.question}</label> <div className="flex items-center space-x-2 mt-1"> <input type="text" id={q.id} value={readingAnswers[q.id]} onChange={(e) => handleReadingAnswerChange(q.id, e.target.value)} className="w-full p-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none" placeholder="Type your answer..." disabled={!!readingFeedback[q.id]} /> <button onClick={() => checkReadingAnswer(q.id)} disabled={!!readingFeedback[q.id]} className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 disabled:bg-slate-300">Check</button> </div> {readingFeedback[q.id] && (<p className={`mt-1 text-sm font-bold ${readingFeedback[q.id] === 'correct' ? 'text-green-600' : 'text-red-600'}`}> {readingFeedback[q.id] === 'correct' ? '✓ Correct!' : '✗ Not quite, check the story again.'} </p>)} </div> ))} </div> </WorksheetCard>
-            <WorksheetCard> <SectionHeader icon={<IconBasketball />} title="3. Jumbled Words" subtitle="Arrange the words to make correct sentences" color="blue"/> <div className="grid md:grid-cols-2 gap-6"> {jumbledWordsData.map(item => ( <div key={item.id} className="bg-slate-50 p-4 rounded-lg border flex flex-col"> <div className="flex-grow"> {item.svg} <p className="h-12 flex items-center justify-center text-slate-600 mb-2 font-semibold">{item.jumbled}</p> <inpu t type="text" value={jumbledAnswers[item.id] || ''} onChange={(e) => handleJumbledAnswerChange(item.id, e.target.value)} className={`w-full p-2 border text-center rounded-lg focus:ring-2 focus:outline-none ${!jumbledFeedback[item.id] ? 'border-slate-300 focus:ring-blue-400' : ''} ${jumbledFeedback[item.id] === 'correct' ? 'border-green-500 bg-green-50 text-green-800' : ''} ${jumbledFeedback[item.id] === 'incorrect' ? 'border-red-500 bg-red-50 text-red-800' : ''}`} placeholder="Your sentence..." /> </div> {jumbledFeedback[item.id] && <p className="text-sm mt-1 text-center">Correct: {item.answer}</p>} <button onClick={() => checkJumbledAnswer(item.id)} className="w-full mt-2 text-sm py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-slate-300" disabled={!jumbledAnswers[item.id] || jumbledFeedback[item.id]}> Check Answer </button> </div> ))} </div> </WorksheetCard>
-            <WorksheetCard> <SectionHeader icon={<IconBasketball />} title="4. Listening & Speaking" subtitle="Practice your skills" /> <div className="grid md:grid-cols-2 gap-8 items-center"> <div className="text-center"><SvgCoachSpeaking /> <h3 className="font-bold text-2xl mb-2 text-slate-800">Listening & Speaking</h3> </div> <div> <p className="mb-4 text-lg text-slate-700">Your teacher will describe a player's practice. Listen carefully, then answer the questions using Past Simple.</p> <h4 className="font-bold text-lg mb-2 text-slate-800">Example Questions:</h4> <ul className="list-disc list-inside space-y-2 text-slate-700 text-lg"><li>What did the player do on Monday?</li><li>Did he practice shooting?</li><li>Who did he play with?</li><li>What did he eat after practice?</li><li>How did he feel?</li><li>Did he watch a game on TV?</li><li>What time did he go to sleep?</li><li>Did he feel tired the next day?</li><li>What was his favorite part of the practice?</li><li>Did he learn a new move?</li></ul> </div> </div> </WorksheetCard>
-            <WorksheetCard> <SectionHeader icon={<IconBasketball />} title="5. Interactive Game" subtitle="Choose the correct verb to score!" /> {gameFinished ? (<div>Finished! Score: {gameState.userAnswers.filter(a=>a.isCorrect).length}/{gameQuizData.length}</div>) : ( <div className="text-center"> <p className="font-bold text-slate-500">Question {gameState.currentIndex + 1} of {gameQuizData.length}</p> <p className="text-3xl font-bold my-8 min-h-[4rem] flex items-center justify-center text-slate-800">{gameQuizData[gameState.currentIndex].q.replace('___', '_____')}</p> <div className="w-full max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-3"> {gameQuizData[gameState.currentIndex].o.map((option, index) => { let buttonClass = 'bg-green-500 text-white hover:bg-green-600'; if (gameState.feedback) { if (option === gameQuizData[gameState.currentIndex].a) buttonClass = 'bg-green-500 text-white'; else if (option === gameState.selectedAnswer) buttonClass = 'bg-red-500 text-white'; else buttonClass = 'bg-slate-200 text-slate-500'; } return (<button key={index} onClick={() => handleGameAnswer(option)} className={`p-4 rounded-lg font-bold text-xl transition-all ${buttonClass}`} disabled={!!gameState.feedback}>{option}</button>); })} </div> {gameState.feedback && ( <div className="mt-6"><BigButton onClick={handleNextGameQuestion} className="bg-slate-800 border-slate-900">Next →</BigButton></div> )} </div> )} </WorksheetCard>
-            <WorksheetCard> <SectionHeader icon={<IconBasketball />} title="6. Review Quiz" subtitle="Fill in the blanks with the correct past tense verb" color="violet"/> {quizFinished ? ( <div className="text-center"> <h3 className="text-3xl font-bold text-violet-600">Quiz Complete!</h3> <p className="text-xl mt-2">Your Score: {reviewState.userAnswers.filter(a=>a.isCorrect).length} / {reviewQuizData.length}</p> </div> ) : ( <div className="text-center"> <p className="font-bold text-slate-500">Question {reviewState.currentIndex + 1} of {reviewQuizData.length}</p> <p className="text-3xl font-bold my-8 min-h-[4rem] flex items-center justify-center text-slate-800">{reviewQuizData[reviewState.currentIndex].q.replace('___', '_____')}</p> <div className="w-full max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-3"> {reviewQuizData[reviewState.currentIndex].o.map((option, index) => { let buttonClass = 'bg-violet-500 text-white hover:bg-violet-600'; if (reviewState.feedback) { if (option === reviewQuizData[reviewState.currentIndex].a) buttonClass = 'bg-green-500 text-white'; else if (option === reviewState.selectedAnswer) buttonClass = 'bg-red-500 text-white'; else buttonClass = 'bg-slate-200 text-slate-500'; } return (<button key={index} onClick={() => handleReviewAnswer(option)} className={`p-4 rounded-lg font-bold text-xl transition-all ${buttonClass}`} disabled={!!reviewState.feedback}>{option}</button>); })} </div> {reviewState.feedback && ( <div className="mt-6"><BigButton onClick={handleNextReviewQuestion} className="bg-slate-800 border-slate-900">Next →</BigButton></div> )} </div> )} </WorksheetCard>
-            <div className="pt-8"> <BigButton onClick={() => navigate('/')} className="bg-slate-500 border-slate-600"> ← Back to Home </BigButton> </div>
+            {/* The rest of the sections remain the same */}
+            <section id="writing">
+                <SectionHeader icon={<IconBasketball />} title="3. Writing: Your Game Story" subtitle="Write about a game you played or watched" />
+                <WorksheetCard>
+                    <SvgWritingIllustration />
+                    <p className="text-lg mb-4 text-center">Write a short paragraph (3-5 sentences) about a basketball game. It can be real or imaginary!</p>
+                    <textarea className="w-full mt-2 p-3 border border-slate-300 rounded-lg h-32 resize-none focus:ring-2 focus:ring-amber-400" placeholder="For example: Last week, I watched a great game. The Lakers played against the Celtics..."></textarea>
+                </WorksheetCard>
+            </section>
+
+            <section id="listening-speaking">
+                <SectionHeader icon={<IconBasketball />} title="4 & 5. Listening & Speaking" subtitle="Practice your skills" />
+                <WorksheetCard>
+                    <div className="grid md:grid-cols-2 gap-8 items-center">
+                        <div className="text-center">
+                            <SvgListeningSpeaking />
+                            <h3 className="font-bold text-xl mb-2">Listening & Speaking</h3>
+                            <p className="mb-4">Your teacher will play an audio clip about a player's practice last week. Listen carefully.</p>
+                        </div>
+                        <div>
+                            <h3 className="font-bold text-xl mb-2">Speaking</h3>
+                            <p className="mb-2">Answer these questions with your teacher:</p>
+                            <ul className="list-disc list-inside space-y-1 text-slate-600">
+                                <li>What did you do last weekend?</li>
+                                <li>Did you watch any basketball games last month?</li>
+                                <li>Describe one cool thing you saw in a game.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </WorksheetCard>
+            </section>
+
+            <section id="game">
+                <SectionHeader icon={<IconBasketball />} title="6. Interactive Game: Verb Shootout" subtitle="Change the verb to the Past Simple form to score!" />
+                <WorksheetCard>
+                    <div className="text-center">
+                        <SvgHoop />
+                        <div className="bg-slate-800 text-white p-4 rounded-lg my-4 inline-block">
+                            <p className="text-sm uppercase text-slate-400">Verb (Present)</p>
+                            <p className="text-4xl font-bold tracking-widest">{gameVerbs[currentGameVerbIndex].p}</p>
+                        </div>
+                        <div className="flex justify-center items-center space-x-2">
+                            <input type="text" value={gameInput} onChange={e => setGameInput(e.target.value)} className="w-full max-w-sm p-3 text-center text-2xl border-2 border-slate-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none" placeholder="Type past tense..." disabled={!!gameFeedback} />
+                            {!gameFeedback ? ( <BigButton onClick={checkGameAnswer} className="w-auto bg-orange-500 border-orange-700 !text-base">Shoot!</BigButton> ) : ( <BigButton onClick={nextGameVerb} className="w-auto bg-slate-500 border-slate-700 !text-base">Next →</BigButton> )}
+                        </div>
+                        {gameFeedback && ( <p className={`mt-4 text-xl font-bold ${gameFeedback.includes('Swish') ? 'text-green-600' : 'text-red-600'}`}>{gameFeedback}</p> )}
+                    </div>
+                </WorksheetCard>
+            </section>
+            
+            <section id="review">
+                <SectionHeader icon={<IconBasketball />} title="7. Review & Practice" subtitle="Final exercises" />
+                <WorksheetCard>
+                    <div className="text-center">
+                        <SvgReview />
+                        <h3 className="text-xl font-bold mt-4">Flashcard Practice</h3>
+                        <p className="text-slate-600 mt-2 text-lg">Your teacher will now show you flashcards with verbs. Say the Past Simple form aloud!</p>
+                        <p className="mt-2 font-mono text-xl">Example: see → <span className="font-bold">saw</span></p>
+                    </div>
+                </WorksheetCard>
+            </section>
+
+             <div className="pt-8">
+                <BigButton onClick={() => navigate('/')} className="bg-slate-500 border-slate-600">
+                    ← Back to Home
+                </BigButton>
+            </div>
         </div>
     );
 };
