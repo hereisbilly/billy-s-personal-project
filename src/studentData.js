@@ -14,7 +14,7 @@ const initialStudentData = {
     'sulthan': {
         name: 'Sulthan Keenan',
         // This student has no lessons assigned yet
-        modules: []
+        modules: ['sulthan-refreshment', 'sulthan-future-simple']
     },
     'resfathi': {
         name: 'Resfathi',
@@ -29,7 +29,7 @@ const initialStudentData = {
     'xie-couple': {
         name: 'Xie Siyan & Xie Sili',
         // Their module list is empty for now
-        modules: ['k5-reading-writing', 'k5-counting']
+        modules: ['k5-reading-writing', 'k5-counting', 'k5-reading-game']
     }
 };
 

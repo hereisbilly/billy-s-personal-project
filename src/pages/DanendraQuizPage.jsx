@@ -37,7 +37,8 @@ const quizData = [
   { category: "Prepositions", question: "The cat is hiding ___ the table.", options: ["in", "on", "under"], answer: "under" },
   { category: "Prepositions", question: "The poster is ___ my bedroom wall.", options: ["on", "in", "under"], answer: "on" },
   // Past Simple (8 questions)
-  { category: "Past Simple", question: "Yesterday, I ___ a great movie.", options: ["watch", "watches", "watched"], answer: "watched" },
+  { category: "Past Simple", question: "Yesterday, I ___ a great movie.", options: ["watch", "watches", "watched"], answer: "watched", svg: <img src="https://images.pexels.com/photos/7991579/pexels-photo-7991579.jpeg" alt="Movie night" className="w-48 h-36 mx-auto mb-4 rounded-lg object-cover" />, 
+  context: "Use the Past Simple tense:" },
   { category: "Past Simple", question: "He ___ to the court last night.", options: ["go", "goes", "went"], answer: "went" },
   { category: "Past Simple", question: "We ___ not see the game.", options: ["do", "does", "did"], answer: "did" },
   { category: "Past Simple", question: "They ___ pizza for dinner.", options: ["eat", "ate", "eaten"], answer: "ate" },
@@ -146,7 +147,7 @@ const QuizPage = () => {
         playSound(isCorrect ? correctSoundUrl : incorrectSoundUrl);
         setUserAnswers(prev => [...prev, { ...question, userAnswer: option, isCorrect }]);
     };
-
+quizData
     const handleNextQuestion = () => {
         if (currentIndex < quizData.length - 1) {
             setCurrentIndex(prev => prev + 1);

@@ -6,12 +6,22 @@ import { WorksheetCard } from '../components/common';
 import { loadStudentData } from '../studentData'; // ✅ Impor data kita
 
 // Daftar semua modul yang mungkin ada, dengan nama yang bagus
+// src/pages/StudentPage.jsx
+
+// ... (imports remain the same)
+
+// ✅ Corrected code block with all necessary commas
 const allModules = {
     'diagnostic-quiz': { name: 'Refreshment Quiz (All Topics)' },
     'basketball-past-simple': { name: 'Module: Past Simple (Basketball)' },
     'k5-reading-writing': { name: 'Reading & Writing Fun (K5)' },
     'k5-counting': { name: 'Counting Adventure (K5)' },
+    'k5-reading-game': { name: 'Picture Word Match Game (K5)' },
+    'sulthan-refreshment': { name: 'Refreshment Quiz (Sulthan)' },
+    'sulthan-future-simple': { name: 'Module: Future Simple' },
 };
+
+// ... (The rest of the file stays exactly the same)
 
 const StudentPage = () => {
     const { studentId } = useParams();

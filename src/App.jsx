@@ -10,6 +10,9 @@ import BasketballPastSimplePage from './pages/BasketballPastSimplePage';
 import DanendraQuizPage from './pages/DanendraQuizPage';
 import K5ReadingWritingPage from './pages/K5ReadingWritingPage';
 import K5CountingPage from './pages/K5CountingPage';
+import K5ReadingGamePage from './pages/K5ReadingGamePage';
+import SulthanQuizPage from './pages/SulthanQuizPage';
+import SulthanFutureSimplePage from './pages/SulthanFutureSimplePage';
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
           <Route path="/student/:studentId/module/diagnostic-quiz" element={<DanendraQuizPage />} />
           <Route path="/student/:studentId/module/k5-reading-writing" element={<K5ReadingWritingPage />} />
           <Route path="/student/:studentId/module/k5-counting" element={<K5CountingPage />} />
+          <Route path="/student/:studentId/module/k5-reading-game" element={<K5ReadingGamePage />} />
+          <Route path="/student/:studentId/module/sulthan-refreshment" element={<SulthanQuizPage />} />
+          <Route path="/student/:studentId/module/sulthan-future-simple" element={<SulthanFutureSimplePage />} />
         </Routes>
 
       </main>
