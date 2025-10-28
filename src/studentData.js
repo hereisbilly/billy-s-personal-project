@@ -4,7 +4,7 @@ const initialStudentData = {
     'danendra': {
         name: 'Danendra Marta',
         // Danendra has his assigned lessons
-        modules: ['basketball-past-simple', 'diagnostic-quiz']
+        modules: ['basketball-past-simple', 'diagnostic-quiz', 'danendra-past-continuous']
     },
     'raja': {
         name: 'Raja Lespe',

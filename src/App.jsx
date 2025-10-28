@@ -3,16 +3,18 @@
 import React, { useState } from 'react';
 import { Routes, Route, useParams } from 'react-router-dom';
 
-// ✅ IMPORT STATEMENTS WERE MISSING - THEY ARE NOW RESTORED
+// Import all your pages
 import StudentDashboard from './pages/StudentDashboard';
 import StudentPage from './pages/StudentPage';
 import BasketballPastSimplePage from './pages/BasketballPastSimplePage';
-import DanendraQuizPage from './pages/DanendraQuizPage'; 
+import DanendraQuizPage from './pages/DanendraQuizPage';
 import K5ReadingWritingPage from './pages/K5ReadingWritingPage';
 import K5CountingPage from './pages/K5CountingPage';
 import K5ReadingGamePage from './pages/K5ReadingGamePage';
 import SulthanQuizPage from './pages/SulthanQuizPage';
 import SulthanFutureSimplePage from './pages/SulthanFutureSimplePage';
+// ✅ THE IMPORT NAME AND PATH ARE NOW CORRECTED
+import DanendraPastContinuousPage from './pages/DanendraPastContinuousPage';
 
 const Header = () => {
   const params = useParams();
@@ -47,7 +49,7 @@ function App() {
   };
 
   return (
-    <div 
+    <div
       className="min-h-screen bg-gradient-to-br from-cyan-50 via-teal-50 to-emerald-100 font-sans text-slate-800"
       onClick={handleFirstInteraction}
     >
@@ -66,10 +68,12 @@ function App() {
           <Route path="/student/:studentId/module/k5-reading-game" element={<K5ReadingGamePage />} />
           <Route path="/student/:studentId/module/sulthan-refreshment" element={<SulthanQuizPage />} />
           <Route path="/student/:studentId/module/sulthan-future-simple" element={<SulthanFutureSimplePage />} />
+          {/* ✅ THE ROUTE PATH IS NOW CORRECTED */}
+          <Route path="/student/:studentId/module/danendra-past-continuous" element={<DanendraPastContinuousPage />} />
         </Routes>
       </main>
-      <footer className="text-center p-6 text-slate-500"> 
-        <p>&copy; 2025 ESL Interactive Worksheets by Billy Dwi Nugroho</p> 
+      <footer className="text-center p-6 text-slate-500">
+        <p>&copy; 2025 ESL Interactive Worksheets by Billy Dwi Nugroho</p>
       </footer>
     </div>
   );

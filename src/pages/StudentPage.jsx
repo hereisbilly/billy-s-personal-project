@@ -19,6 +19,7 @@ const allModules = {
     'k5-reading-game': { name: 'Picture Word Match Game (K5)' },
     'sulthan-refreshment': { name: 'Refreshment Quiz (Sulthan)' },
     'sulthan-future-simple': { name: 'Module: Future Simple' },
+    'danendra-past-continuous': { name: 'Module: Past Continuous (Storytelling)' },
 };
 
 // ... (The rest of the file stays exactly the same)
