@@ -16,6 +16,7 @@ import SulthanFutureSimplePage from './pages/SulthanFutureSimplePage';
 // ✅ THE IMPORT NAME AND PATH ARE NOW CORRECTED
 import DanendraPastContinuousPage from './pages/DanendraPastContinuousPage';
 import RajaPresentSimplePage from './pages/RajaPresentSimplePage';
+import DanendraPresentPerfectSimple from './pages/DanendraPresentPerfectSimple';
 
 const Header = () => {
   const params = useParams();
@@ -72,6 +73,9 @@ function App() {
           {/* ✅ THE ROUTE PATH IS NOW CORRECTED */}
           <Route path="/student/:studentId/module/danendra-past-continuous" element={<DanendraPastContinuousPage />} />
           <Route path="/student/:studentId/module/raja-present-simple" element={<RajaPresentSimplePage />} />
+          <Route path="/student/:studentId/module/danendra-present-perfect-simple" element={<DanendraPresentPerfectSimple />} />
+          {/* Alias for older/other slug so StudentPage links still work */}
+          <Route path="/student/:studentId/module/danendrapresentperfectsimple" element={<DanendraPresentPerfectSimple />} />
         </Routes>
       </main>
       <footer className="text-center p-6 text-slate-500">

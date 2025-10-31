@@ -3,7 +3,7 @@
 const initialStudentData = {
     'danendra': {
         name: 'Danendra Marta',
-        modules: ['basketball-past-simple', 'diagnostic-quiz', 'danendra-past-continuous']
+        modules: ['basketball-past-simple', 'diagnostic-quiz', 'danendra-past-continuous', 'danendra-present-perfect-simple']
     },
     'raja': {
         name: 'Raja Lespe',
