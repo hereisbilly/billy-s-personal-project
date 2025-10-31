@@ -15,6 +15,7 @@ import SulthanQuizPage from './pages/SulthanQuizPage';
 import SulthanFutureSimplePage from './pages/SulthanFutureSimplePage';
 // ✅ THE IMPORT NAME AND PATH ARE NOW CORRECTED
 import DanendraPastContinuousPage from './pages/DanendraPastContinuousPage';
+import RajaPresentSimplePage from './pages/RajaPresentSimplePage';
 
 const Header = () => {
   const params = useParams();
@@ -70,6 +71,7 @@ function App() {
           <Route path="/student/:studentId/module/sulthan-future-simple" element={<SulthanFutureSimplePage />} />
           {/* ✅ THE ROUTE PATH IS NOW CORRECTED */}
           <Route path="/student/:studentId/module/danendra-past-continuous" element={<DanendraPastContinuousPage />} />
+          <Route path="/student/:studentId/module/raja-present-simple" element={<RajaPresentSimplePage />} />
         </Routes>
       </main>
       <footer className="text-center p-6 text-slate-500">

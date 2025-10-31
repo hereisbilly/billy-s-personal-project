@@ -3,32 +3,27 @@
 const initialStudentData = {
     'danendra': {
         name: 'Danendra Marta',
-        // Danendra has his assigned lessons
         modules: ['basketball-past-simple', 'diagnostic-quiz', 'danendra-past-continuous']
     },
     'raja': {
         name: 'Raja Lespe',
-        // This student has no lessons assigned yet
-        modules: []
+        // ✅ CORRECTED: The lesson is now properly assigned here
+        modules: ['raja-present-simple']
     },
     'sulthan': {
         name: 'Sulthan Keenan',
-        // This student has no lessons assigned yet
         modules: ['sulthan-refreshment', 'sulthan-future-simple']
     },
     'resfathi': {
         name: 'Resfathi',
-        // This student has no lessons assigned yet
         modules: []
     },
     'dodie-petronela': {
         name: 'Dodie & Petronela',
-        // This student has no lessons assigned yet
         modules: []
     },
     'xie-couple': {
         name: 'Xie Siyan & Xie Sili',
-        // Their module list is empty for now
         modules: ['k5-reading-writing', 'k5-counting', 'k5-reading-game']
     }
 };

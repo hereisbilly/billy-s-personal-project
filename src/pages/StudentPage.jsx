@@ -20,6 +20,7 @@ const allModules = {
     'sulthan-refreshment': { name: 'Refreshment Quiz (Sulthan)' },
     'sulthan-future-simple': { name: 'Module: Future Simple' },
     'danendra-past-continuous': { name: 'Module: Past Continuous (Storytelling)' },
+    'raja-present-simple': { name: 'Module: Present Simple (Daily Life)' }
 };
 
 // ... (The rest of the file stays exactly the same)
