@@ -7,7 +7,6 @@ const initialStudentData = {
     },
     'raja': {
         name: 'Raja Lespe',
-        // ✅ CORRECTED: The lesson is now properly assigned here
         modules: ['raja-present-simple']
     },
     'sulthan': {
@@ -25,6 +24,10 @@ const initialStudentData = {
     'xie-couple': {
         name: 'Xie Siyan & Xie Sili',
         modules: ['k5-reading-writing', 'k5-counting', 'k5-reading-game']
+    },
+    'febri': {
+        name: 'Febri',
+        modules: ['febri-lesson']
     }
 };
 

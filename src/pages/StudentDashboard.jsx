@@ -23,8 +23,8 @@ const students = [
     { id: 'sulthan', name: 'Sulthan Keenan' },
     { id: 'resfathi', name: 'Resfathi' },
     { id: 'dodie-petronela', name: 'Dodie & Petronela' },
-    // ✅ Xie Siyan & Xie Sili are now one item
     { id: 'xie-couple', name: 'Xie Siyan & Xie Sili' },
+    { id: 'febri', name: 'Febri' },
 ];
 
 const StudentDashboard = () => {
