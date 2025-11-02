@@ -18,6 +18,7 @@ import DanendraPastContinuousPage from './pages/DanendraPastContinuousPage';
 import RajaPresentSimplePage from './pages/RajaPresentSimplePage';
 import DanendraPresentPerfectSimple from './pages/DanendraPresentPerfectSimple';
 import FebriPresentLesson from './pages/FebriLessonPage';
+import SulthanPresentPerfectSimple from './pages/SulthanPresentPerfectSimple';
 
 const Header = () => {
   const params = useParams();
@@ -76,6 +77,7 @@ function App() {
           <Route path="/student/:studentId/module/raja-present-simple" element={<RajaPresentSimplePage />} />
           <Route path="/student/:studentId/module/danendra-present-perfect-simple" element={<DanendraPresentPerfectSimple />} />
           <Route path="/student/:studentId/module/febri-lesson" element={<FebriPresentLesson />} />
+          <Route path="/student/:studentId/module/sulthan-present-perfect-simple" element={<SulthanPresentPerfectSimple />} />
           {/* Alias for older/other slug so StudentPage links still work */}
           <Route path="/student/:studentId/module/danendrapresentperfectsimple" element={<DanendraPresentPerfectSimple />} />
         </Routes>

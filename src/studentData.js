@@ -11,7 +11,7 @@ const initialStudentData = {
     },
     'sulthan': {
         name: 'Sulthan Keenan',
-        modules: ['sulthan-refreshment', 'sulthan-future-simple']
+        modules: ['sulthan-refreshment', 'sulthan-future-simple', 'sulthan-present-perfect-simple']
     },
     'resfathi': {
         name: 'Resfathi',

@@ -22,7 +22,7 @@ const allModules = {
     'danendra-past-continuous': { name: 'Module: Past Continuous (Storytelling)' },
     'raja-present-simple': { name: 'Module: Present Simple (Daily Life)' },
     'danendra-present-perfect-simple': { name: 'Module: Present Perfect Simple (Experiences)' },
-    'febri-lesson': { name: "Module: Febri's Lesson" },
+    'sulthan-present-perfect-simple': { name: 'Module: Present Perfect Simple (Experiences)' },
 };
 
 // ... (The rest of the file stays exactly the same)
