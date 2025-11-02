@@ -36,25 +36,25 @@ const FebriPresentLesson = () => {
     ];
 
     const jumbledWordsData = [
-        { id: 1, jumbled: "I / am / a student", answer: "I am a student.", 
+        { id: 1, jumbled: "student / a / am / I", answer: "I am a student.", 
           img: "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg" },
-        { id: 2, jumbled: "They / are / doctors", answer: "They are doctors.", 
+        { id: 2, jumbled: "doctors / they / are", answer: "They are doctors.", 
           img: "https://images.pexels.com/photos/4173239/pexels-photo-4173239.jpeg" },
-        { id: 3, jumbled: "He / is / my brother", answer: "He is my brother.", 
+        { id: 3, jumbled: "brother / is / my / he", answer: "He is my brother.", 
           img: "https://images.pexels.com/photos/708440/pexels-photo-708440.jpeg" },
-        { id: 4, jumbled: "We / are / happy", answer: "We are happy.", 
+        { id: 4, jumbled: "happy / we / are", answer: "We are happy.", 
           img: "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg" },
-        { id: 5, jumbled: "She / is / a teacher", answer: "She is a teacher.", 
+        { id: 5, jumbled: "teacher / a / she / is", answer: "She is a teacher.", 
           img: "https://images.pexels.com/photos/3769714/pexels-photo-3769714.jpeg" },
-        { id: 6, jumbled: "The weather / is / cold", answer: "The weather is cold.", 
+        { id: 6, jumbled: "cold / weather / is / the", answer: "The weather is cold.", 
           img: "https://images.pexels.com/photos/688660/pexels-photo-688660.jpeg" },
-        { id: 7, jumbled: "You / are / right", answer: "You are right.", 
+        { id: 7, jumbled: "right / you / are", answer: "You are right.", 
           img: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg" },
-        { id: 8, jumbled: "It / is / sunny today", answer: "It is sunny today.", 
+        { id: 8, jumbled: "today / is / sunny / it", answer: "It is sunny today.", 
           img: "https://images.pexels.com/photos/912110/pexels-photo-912110.jpeg" },
-        { id: 9, jumbled: "The students / are / here", answer: "The students are here.", 
+        { id: 9, jumbled: "here / the / are / students", answer: "The students are here.", 
           img: "https://images.pexels.com/photos/8199172/pexels-photo-8199172.jpeg" },
-        { id: 10, jumbled: "I / am / happy", answer: "I am happy.", 
+        { id: 10, jumbled: "happy / I / am", answer: "I am happy.", 
           img: "https://images.pexels.com/photos/2869318/pexels-photo-2869318.jpeg" }
     ];
 
@@ -120,16 +120,17 @@ const FebriPresentLesson = () => {
     };
     const handleGameAnswer = (option) => {
         if (gameState.feedback) return;
-        const isCorrect = option === gameQuizData[gameState.currentIndex].a;
+        const isCorrect = option === mergedQuizData[gameState.currentIndex].a;
         setGameState(prev => ({
             ...prev,
             selectedAnswer: option,
             feedback: isCorrect ? 'correct' : 'incorrect',
-            userAnswers: [...prev.userAnswers, { ...gameQuizData[prev.currentIndex], userAnswer: option, isCorrect }]
+            userAnswers: [...prev.userAnswers, { ...mergedQuizData[prev.currentIndex], userAnswer: option, isCorrect }]
         }));
     };
+
     const handleNextGameQuestion = () => {
-        if (gameState.currentIndex < gameQuizData.length - 1) {
+        if (gameState.currentIndex < mergedQuizData.length - 1) {
             setGameState(prev => ({ ...prev, currentIndex: prev.currentIndex + 1, selectedAnswer: null, feedback: null }));
         } else {
             setGameFinished(true);
