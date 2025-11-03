@@ -23,6 +23,7 @@ const allModules = {
     'raja-present-simple': { name: 'Module: Present Simple (Daily Life)' },
     'danendra-present-perfect-simple': { name: 'Module: Present Perfect Simple (Experiences)' },
     'sulthan-present-perfect-simple': { name: 'Module: Present Perfect Simple (Experiences)' },
+    'danendra-future-will-going-to': { name: 'Module: Future Tenses (Will vs Going To)' },
 };
 
 // ... (The rest of the file stays exactly the same)

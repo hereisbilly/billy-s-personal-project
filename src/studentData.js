@@ -1,9 +1,15 @@
 // src/studentData.js
 
-const initialStudentData = {
+export const initialStudentData = {
     'danendra': {
         name: 'Danendra Marta',
-        modules: ['basketball-past-simple', 'diagnostic-quiz', 'danendra-past-continuous', 'danendra-present-perfect-simple']
+        modules: [
+            'basketball-past-simple',
+            'diagnostic-quiz',
+            'danendra-past-continuous',
+            'danendra-present-perfect-simple',
+            'danendra-future-will-going-to'
+        ]
     },
     'raja': {
         name: 'Raja Lespe',
