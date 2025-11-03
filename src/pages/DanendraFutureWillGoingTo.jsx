@@ -48,16 +48,17 @@ const DanendraFutureWillGoingTo = () => {
     ];
 
     const jumbledWordsData = [
-        { id: 1, jumbled: "will / I / start / tomorrow", answer: "I will start tomorrow.", img: "https://images.pexels.com/photos/21014/pexels-photo.jpg" },
-        { id: 2, jumbled: "going / am / to / I / travel / next year", answer: "I am going to travel next year.", img: "https://images.pexels.com/photos/19090/pexels-photo.jpg" },
-        { id: 3, jumbled: "will / Leo / move / next year", answer: "Leo will move next year.", img: "https://images.pexels.com/photos/210647/pexels-photo-210647.jpeg" },
-        { id: 4, jumbled: "is / going / Maria / to / meet / people", answer: "Maria is going to meet people.", img: "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg" },
-        { id: 5, jumbled: "We / are / going / to / see / new places", answer: "We are going to see new places.", img: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-        { id: 6, jumbled: "will / she / enjoy / her work", answer: "She will enjoy her work.", img: "https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-        { id: 7, jumbled: "I / am / going / to / join / the team", answer: "I am going to join the team.", img: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg" },
-        { id: 8, jumbled: "will / it / rain / tomorrow", answer: "It will rain tomorrow.", img: "https://images.pexels.com/photos/1117132/pexels-photo-1117132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
-        { id: 9, jumbled: "are / we / going / to / start / now", answer: "We are going to start now.", img: "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg" },
-        { id: 10, jumbled: "will / you / come / later", answer: "Will you come later?", img: "https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg" }
+        { id: 1, jumbled: "will / I / start / tomorrow", answer: "I will start tomorrow.", img: "https://images.pexels.com/photos/1556706/pexels-photo-1556706.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+        { id: 2, jumbled: "going / am / to / I / travel / next year", answer: "I am going to travel next year.", img: "https://images.pexels.com/photos/2922672/pexels-photo-2922672.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+        { id: 3, jumbled: "will / Leo / move / next year", answer: "Leo will move next year.", img: "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+        { id: 4, jumbled: "is / going / Maria / to / meet / people", answer: "Maria is going to meet people.", img: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+        { id: 5, jumbled: "We / are / going / to / see / new places", answer: "We are going to see new places.", img: "https://images.pexels.com/photos/1462935/pexels-photo-1462935.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+        { id: 6, jumbled: "will / she / enjoy / her work", answer: "She will enjoy her work.", img: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+        { id: 7, jumbled: "I / am / going / to / join / the team", answer: "I am going to join the team.", img: "https://images.pexels.com/photos/3184433/pexels-photo-3184433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+        { id: 8, jumbled: "will / it / rain / tomorrow", answer: "It will rain tomorrow.", img: "https://images.pexels.com/photos/459451/pexels-photo-459451.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+        { id: 9, jumbled: "are / we / going / to / start / now", answer: "We are going to start now.", img: "https://images.pexels.com/photos/2775269/pexels-photo-2775269.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+        { id: 10, jumbled: "will / you / come / later", answer: "Will you come later?", img: "https://images.pexels.com/photos/4307884/pexels-photo-4307884.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+        { id: 11, jumbled: "They / are / going / to / build / a new house", answer: "They are going to build a new house.", img: "https://images.pexels.com/photos/1115804/pexels-photo-1115804.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }
     ];
 
     const mergedQuizData = [
@@ -302,4 +303,3 @@ const DanendraFutureWillGoingTo = () => {
 };
 
 export default DanendraFutureWillGoingTo;
-// ...existing code...
