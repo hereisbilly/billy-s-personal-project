@@ -25,7 +25,7 @@ export const initialStudentData = {
     },
     'dodie-petronela': {
         name: 'Dodie & Petronela',
-        modules: []
+        modules: ['dodie-patronela-travel-lesson']
     },
     'xie-couple': {
         name: 'Xie Siyan & Xie Sili',

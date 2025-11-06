@@ -24,6 +24,7 @@ const allModules = {
     'danendra-present-perfect-simple': { name: 'Module: Present Perfect Simple (Experiences)' },
     'sulthan-present-perfect-simple': { name: 'Module: Present Perfect Simple (Experiences)' },
     'danendra-future-will-going-to': { name: 'Module: Future Tenses (Will vs Going To)' },
+    'dodie-patronela-travel-lesson': { name: 'Module: Conversational English for Travel' },
 };
 
 // ... (The rest of the file stays exactly the same)
@@ -46,23 +47,23 @@ const StudentPage = () => {
     }));
 
     return (
-        <WorksheetCard>
-            <h2 className="text-4xl font-bold text-center mb-2">
-                Welcome, <span className="text-teal-500">{currentStudent.name}!</span>
+        <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+            <h2 className="text-3xl sm:text-4xl font-black text-center mb-2 text-slate-700">
+                Student Page: <span className="text-emerald-500">{currentStudent.name}</span>
             </h2>
-            <p className="text-slate-500 text-center text-lg mb-8">Please choose a module to begin.</p>
+            <p className="text-slate-500 text-center text-lg mb-8 font-sans tracking-wider">Select a lesson to begin.</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {assignedModules.map(module => (
                     <Link 
                         key={module.id} 
                         to={`/student/${studentId}/module/${module.id}`}
-                        className="p-8 bg-cyan-500 text-white font-bold text-2xl text-center rounded-lg shadow-md hover:bg-cyan-600 transition-all"
+                        className="block p-4 bg-slate-50 text-slate-700 font-bold text-lg text-left border-2 border-slate-200 rounded-xl hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition-all duration-300"
                     >
                         {module.name}
                     </Link>
                 ))}
             </div>
-        </WorksheetCard>
+        </div>
     );
 };
 

@@ -20,19 +20,20 @@ import DanendraPresentPerfectSimple from './pages/DanendraPresentPerfectSimple';
 import FebriPresentLesson from './pages/FebriLessonPage';
 import DanendraFutureWillGoingTo from './pages/DanendraFutureWillGoingTo';
 import SulthanPresentPerfectSimple from './pages/SulthanPresentPerfectSimple';
+import DodiePatronelaTravelLesson from './pages/DodiePatronelaTravelLesson';
 
 const Header = () => {
   const params = useParams();
   const studentName = params.studentId ? params.studentId.charAt(0).toUpperCase() + params.studentId.slice(1) : null;
 
   return (
-    <header className="p-8 text-center bg-white shadow-md">
-      <div className="flex flex-col items-center justify-center gap-4">
-        <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-teal-600 leading-tight py-2">
-          Learn English, but way more fun!
+    <header className="p-4 sm:p-6 text-center border-b-2 border-slate-200">
+      <div className="flex flex-col items-center justify-center gap-2">
+        <h1 className="text-3xl sm:text-4xl font-black text-emerald-500 font-sans uppercase tracking-wider">
+          English Lessons
         </h1>
-        <h2 className="text-slate-600 text-2xl font-semibold">
-          {studentName ? `Student: ${studentName}` : 'Billy Dwi Nugroho'}
+        <h2 className="text-slate-500 text-xl sm:text-2xl font-semibold tracking-wider">
+          {studentName ? `Student: ${studentName}` : 'Instructor: Billy'}
         </h2>
       </div>
     </header>
@@ -55,7 +56,7 @@ function App() {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-cyan-50 via-teal-50 to-emerald-100 font-sans text-slate-800"
+      className="min-h-screen bg-slate-100 font-sans text-slate-800"
       onClick={handleFirstInteraction}
     >
       <Routes>
@@ -80,11 +81,11 @@ function App() {
           <Route path="/student/:studentId/module/febri-lesson" element={<FebriPresentLesson />} />
           <Route path="/student/:studentId/module/sulthan-present-perfect-simple" element={<SulthanPresentPerfectSimple />} />
           <Route path="/student/:studentId/module/danendra-future-will-going-to" element={<DanendraFutureWillGoingTo />} />
+          <Route path="/student/:studentId/module/dodie-patronela-travel-lesson" element={<DodiePatronelaTravelLesson />} />
           {/* Alias for older/other slug so StudentPage links still work */}
           <Route path="/student/:studentId/module/danendrapresentperfectsimple" element={<DanendraPresentPerfectSimple />} />
         </Routes>
-      </main>
-      <footer className="text-center p-6 text-slate-500">
+      </main>      <footer className="text-center p-6 text-slate-400 text-xs font-sans tracking-widest">
         <p>&copy; 2025 ESL Interactive Worksheets by Billy Dwi Nugroho</p>
       </footer>
     </div>
