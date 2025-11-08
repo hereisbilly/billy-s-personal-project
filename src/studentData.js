@@ -8,7 +8,8 @@ export const initialStudentData = {
             'diagnostic-quiz',
             'danendra-past-continuous',
             'danendra-present-perfect-simple',
-            'danendra-future-will-going-to'
+            'danendra-future-will-going-to',
+            'danendra-modal-verbs'
         ]
     },
     'raja': {

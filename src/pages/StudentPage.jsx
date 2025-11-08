@@ -25,6 +25,7 @@ const allModules = {
     'sulthan-present-perfect-simple': { name: 'Module: Present Perfect Simple (Experiences)' },
     'danendra-future-will-going-to': { name: 'Module: Future Tenses (Will vs Going To)' },
     'dodie-patronela-travel-lesson': { name: 'Module: Conversational English for Travel' },
+    'danendra-modal-verbs': { name: 'Module: Modal Verbs' },
 };
 
 // ... (The rest of the file stays exactly the same)
