@@ -1,8 +1,7 @@
 // src/App.jsx
 
-import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, useParams, Outlet } from 'react-router-dom';
-
+import React from 'react';
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 // Import all your pages
 import StudentDashboard from './pages/StudentDashboard';
 import StudentPage from './pages/StudentPage';
@@ -43,52 +42,35 @@ const Header = () => {
 };
 
 function App() {
-  const [audioUnlocked, setAudioUnlocked] = useState(false);
-
-  const handleFirstInteraction = () => {
-    if (!audioUnlocked) {
-      const synth = window.speechSynthesis;
-      if (synth.getVoices().length === 0) {
-        synth.onvoiceschanged = () => {};
-      }
-      console.log("Audio context unlocked.");
-      setAudioUnlocked(true);
-    }
-  };
-
   return (
     <BrowserRouter>
-      <div
-        className="min-h-screen bg-slate-100 font-sans text-slate-800"
-        onClick={handleFirstInteraction}
-      >
+      <div className="min-h-screen bg-slate-100 font-sans text-slate-800">
         <Routes>
           <Route path="*" element={<Header />} />
         </Routes>
         
         <main className="p-4 sm:p-8">
           <Routes>
-            <Route path="/" element={<Outlet context={{ audioUnlocked }} />}>
-              <Route index element={<StudentDashboard />} />
-              <Route path="student/:studentId" element={<StudentPage />} />
-              <Route path="student/:studentId/module/basketball-past-simple" element={<BasketballPastSimplePage />} />
-              <Route path="student/:studentId/module/diagnostic-quiz" element={<DanendraQuizPage />} />
-              <Route path="student/:studentId/module/k5-reading-writing" element={<K5ReadingWritingPage />} />
-              <Route path="student/:studentId/module/k5-counting" element={<K5CountingPage />} />
-              <Route path="student/:studentId/module/k5-reading-game" element={<K5ReadingGamePage />} />
-              <Route path="student/:studentId/module/sulthan-refreshment" element={<SulthanQuizPage />} />
-              <Route path="student/:studentId/module/sulthan-future-simple" element={<SulthanFutureSimplePage />} />
-              <Route path="student/:studentId/module/danendra-past-continuous" element={<DanendraPastContinuousPage />} />
-              <Route path="student/:studentId/module/raja-present-simple" element={<RajaPresentSimplePage />} />
-              <Route path="student/:studentId/module/danendra-present-perfect-simple" element={<DanendraPresentPerfectSimple />} />
-              <Route path="student/:studentId/module/febri-lesson" element={<FebriPresentLesson />} />
-              <Route path="student/:studentId/module/sulthan-present-perfect-simple" element={<SulthanPresentPerfectSimple />} />
-              <Route path="student/:studentId/module/danendra-future-will-going-to" element={<DanendraFutureWillGoingTo />} />
-              <Route path="student/:studentId/module/dodie-patronela-travel-lesson" element={<DodiePatronelaTravelLesson />} />
-              <Route path="student/:studentId/module/danendra-modal-verbs" element={<DanendraModalVerbsLesson />} />
-              <Route path="student/:studentId/module/danendra-present-perfect-continuous" element={<DanendraPresentPerfectContinuousLesson />} />
-              <Route path="student/:studentId/module/danendrapresentperfectsimple" element={<DanendraPresentPerfectSimple />} />
-            </Route>
+            <Route path="/" element={<StudentDashboard />} />
+            <Route path="student/:studentId" element={<StudentPage />} />
+            <Route path="student/:studentId/module/basketball-past-simple" element={<BasketballPastSimplePage />} />
+            <Route path="student/:studentId/module/diagnostic-quiz" element={<DanendraQuizPage />} />
+            <Route path="student/:studentId/module/k5-reading-writing" element={<K5ReadingWritingPage />} />
+            <Route path="student/:studentId/module/k5-counting" element={<K5CountingPage />} />
+            <Route path="student/:studentId/module/k5-reading-game" element={<K5ReadingGamePage />} />
+            <Route path="student/:studentId/module/sulthan-refreshment" element={<SulthanQuizPage />} />
+            <Route path="student/:studentId/module/sulthan-future-simple" element={<SulthanFutureSimplePage />} />
+            <Route path="student/:studentId/module/danendra-past-continuous" element={<DanendraPastContinuousPage />} />
+            <Route path="student/:studentId/module/raja-present-simple" element={<RajaPresentSimplePage />} />
+            <Route path="student/:studentId/module/danendra-present-perfect-simple" element={<DanendraPresentPerfectSimple />} />
+            <Route path="student/:studentId/module/febri-lesson" element={<FebriPresentLesson />} />
+            <Route path="student/:studentId/module/sulthan-present-perfect-simple" element={<SulthanPresentPerfectSimple />} />
+            <Route path="student/:studentId/module/danendra-future-will-going-to" element={<DanendraFutureWillGoingTo />} />
+            <Route path="student/:studentId/module/dodie-patronela-travel-lesson" element={<DodiePatronelaTravelLesson />} />
+            <Route path="student/:studentId/module/danendra-modal-verbs" element={<DanendraModalVerbsLesson />} />
+            <Route path="student/:studentId/module/danendra-present-perfect-continuous" element={<DanendraPresentPerfectContinuousLesson />} />
+            {/* Alias for older/other slug so StudentPage links still work */}
+            <Route path="student/:studentId/module/danendrapresentperfectsimple" element={<DanendraPresentPerfectSimple />} />
           </Routes>
         </main>
         <footer className="text-center p-6 text-slate-400 text-xs font-sans tracking-widest">

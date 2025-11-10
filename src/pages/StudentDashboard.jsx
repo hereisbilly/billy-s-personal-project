@@ -1,7 +1,7 @@
 // src/pages/StudentDashboard.jsx
 
-import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link } from "react-router-dom";
 
 // Ilustrasi SVG (tetap sama)
 const SvgLearningIsFun = () => (
@@ -28,38 +28,8 @@ const students = [
 ];
 
 const StudentDashboard = () => {
-    const audioRef = useRef(null);
-
-    useEffect(() => {
-        const audioElement = audioRef.current;
-
-        const playAudio = () => {
-            if (audioElement && audioElement.paused) {
-                audioElement.volume = 0.3; // Set a comfortable volume
-                audioElement.play().catch(error => {
-                    console.log("Audio playback was prevented by the browser:", error);
-                });
-            }
-        };
-
-        // Add a one-time event listener to play audio on the first user interaction
-        document.addEventListener('click', playAudio, { once: true });
-
-        // Cleanup function: stop music when leaving the page
-        return () => {
-            document.removeEventListener('click', playAudio); // Clean up the listener
-            if (audioElement && !audioElement.paused) {
-                audioElement.pause();
-                audioElement.currentTime = 0;
-            }
-        };
-    }, []); // Empty dependency array means this effect runs only on mount and unmount
-
     return (
         <div className="grid md:grid-cols-2 gap-8 items-center min-h-[80vh] px-4">
-            {/* Hidden audio element for background music */}
-            <audio ref={audioRef} src="https://cdn.pixabay.com/audio/2022/10/24/audio_2814332413.mp3" loop />
-
             {/* Kolom Kiri: Ilustrasi */}
             <div className="flex items-center justify-center">
                 <SvgLearningIsFun />
