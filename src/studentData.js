@@ -9,7 +9,8 @@ export const initialStudentData = {
             'danendra-past-continuous',
             'danendra-present-perfect-simple',
             'danendra-future-will-going-to',
-            'danendra-modal-verbs'
+            'danendra-modal-verbs',
+            'danendra-present-perfect-continuous'
         ]
     },
     'raja': {
