@@ -1,7 +1,7 @@
 // src/pages/StudentDashboard.jsx
 
 import React, { useEffect, useRef } from 'react';
-import { Link, useOutletContext } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // Ilustrasi SVG (tetap sama)
 const SvgLearningIsFun = () => (
@@ -28,34 +28,32 @@ const students = [
 ];
 
 const StudentDashboard = () => {
-    const { audioUnlocked } = useOutletContext();
     const audioRef = useRef(null);
 
     useEffect(() => {
         const audioElement = audioRef.current;
 
-        // Only attempt to play music if the audio context is unlocked by user interaction
-        if (audioUnlocked && audioElement) {
-            audioElement.volume = 0.3; // Set a comfortable volume
-            const playPromise = audioElement.play();
-
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    // This can still happen in some edge cases, but it's less likely.
-                    console.log("Audio playback was prevented:", error);
+        const playAudio = () => {
+            if (audioElement && audioElement.paused) {
+                audioElement.volume = 0.3; // Set a comfortable volume
+                audioElement.play().catch(error => {
+                    console.log("Audio playback was prevented by the browser:", error);
                 });
             }
-        }
+        };
+
+        // Add a one-time event listener to play audio on the first user interaction
+        document.addEventListener('click', playAudio, { once: true });
 
         // Cleanup function: stop music when leaving the page
         return () => {
-            // Check if audioElement exists before trying to pause
+            document.removeEventListener('click', playAudio); // Clean up the listener
             if (audioElement && !audioElement.paused) {
                 audioElement.pause();
                 audioElement.currentTime = 0;
             }
         };
-    }, [audioUnlocked]); // Re-run this effect when audioUnlocked changes from false to true
+    }, []); // Empty dependency array means this effect runs only on mount and unmount
 
     return (
         <div className="grid md:grid-cols-2 gap-8 items-center min-h-[80vh] px-4">
