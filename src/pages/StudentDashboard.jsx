@@ -1,6 +1,6 @@
 // src/pages/StudentDashboard.jsx
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 // Ilustrasi SVG (tetap sama)
@@ -28,8 +28,39 @@ const students = [
 ];
 
 const StudentDashboard = () => {
+    const audioRef = useRef(null);
+
+    useEffect(() => {
+        const audioElement = audioRef.current;
+
+        // Attempt to play music when component mounts
+        if (audioElement) {
+            audioElement.volume = 0.3; // Set a comfortable volume
+            const playPromise = audioElement.play();
+
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    // Autoplay was prevented by the browser.
+                    // This is a standard security feature.
+                    console.log("Background music autoplay was prevented:", error);
+                });
+            }
+        }
+
+        // Cleanup function: stop music when leaving the page
+        return () => {
+            if (audioElement) {
+                audioElement.pause();
+                audioElement.currentTime = 0;
+            }
+        };
+    }, []); // Empty array ensures this effect runs only once on mount and unmount
+
     return (
         <div className="grid md:grid-cols-2 gap-8 items-center min-h-[80vh] px-4">
+            {/* Hidden audio element for background music */}
+            <audio ref={audioRef} src="https://cdn.pixabay.com/audio/2022/10/24/audio_2814332413.mp3" loop />
+
             {/* Kolom Kiri: Ilustrasi */}
             <div className="flex items-center justify-center">
                 <SvgLearningIsFun />
@@ -37,9 +68,6 @@ const StudentDashboard = () => {
 
             {/* Kolom Kanan: Teks Judul dan Pemilihan Siswa */}
             <div className="text-center md:text-left">
-                <h1 className="text-5xl lg:text-6xl font-extrabold text-teal-600 leading-tight">
-                    Learn English, but way more fun!
-                </h1>
                 <h1 className="text-5xl lg:text-6xl font-extrabold text-teal-600 leading-tight flex items-center gap-4 justify-center md:justify-start">
                     <span>Learn English, but way more fun!</span>
                     <span className="text-sm font-bold bg-teal-500 text-white px-3 py-1 rounded-full">v2</span>
