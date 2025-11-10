@@ -37,8 +37,9 @@ const StudentDashboard = () => {
 
             {/* Kolom Kanan: Teks Judul dan Pemilihan Siswa */}
             <div className="text-center md:text-left">
-                <h1 className="text-5xl lg:text-6xl font-extrabold text-teal-600 leading-tight">
-                    Learn English, but way more fun!
+                <h1 className="text-5xl lg:text-6xl font-extrabold text-teal-600 leading-tight flex items-center gap-4 justify-center md:justify-start">
+                    <span>Learn English, but way more fun!</span>
+                    <span className="text-sm font-bold bg-teal-500 text-white px-3 py-1 rounded-full">v2</span>
                 </h1>
                 <h2 className="text-2xl font-semibold text-slate-500 mt-3">
                     by Billy Dwi Nugroho
