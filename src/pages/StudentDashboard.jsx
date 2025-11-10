@@ -27,34 +27,34 @@ const students = [
     { id: 'febri', name: 'Febri' },
 ];
 
-const StudentDashboard = () => {
+const StudentDashboard = ({ audioUnlocked }) => {
     const audioRef = useRef(null);
 
     useEffect(() => {
         const audioElement = audioRef.current;
 
-        // Attempt to play music when component mounts
-        if (audioElement) {
+        // Only attempt to play music if the audio context is unlocked by user interaction
+        if (audioUnlocked && audioElement) {
             audioElement.volume = 0.3; // Set a comfortable volume
             const playPromise = audioElement.play();
 
             if (playPromise !== undefined) {
                 playPromise.catch(error => {
-                    // Autoplay was prevented by the browser.
-                    // This is a standard security feature.
-                    console.log("Background music autoplay was prevented:", error);
+                    // This can still happen in some edge cases, but it's less likely.
+                    console.log("Audio playback was prevented:", error);
                 });
             }
         }
 
         // Cleanup function: stop music when leaving the page
         return () => {
-            if (audioElement) {
+            // Check if audioElement exists before trying to pause
+            if (audioElement && !audioElement.paused) {
                 audioElement.pause();
                 audioElement.currentTime = 0;
             }
         };
-    }, []); // Empty array ensures this effect runs only once on mount and unmount
+    }, [audioUnlocked]); // Re-run this effect when audioUnlocked changes from false to true
 
     return (
         <div className="grid md:grid-cols-2 gap-8 items-center min-h-[80vh] px-4">

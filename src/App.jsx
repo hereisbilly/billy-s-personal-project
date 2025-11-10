@@ -67,7 +67,7 @@ function App() {
       
       <main className="p-4 sm:p-8">
         <Routes>
-          <Route path="/" element={<StudentDashboard />} />
+          <Route path="/" element={<StudentDashboard audioUnlocked={audioUnlocked} />} />
           <Route path="/student/:studentId" element={<StudentPage />} />
           <Route path="/student/:studentId/module/basketball-past-simple" element={<BasketballPastSimplePage />} />
           <Route path="/student/:studentId/module/diagnostic-quiz" element={<DanendraQuizPage />} />
