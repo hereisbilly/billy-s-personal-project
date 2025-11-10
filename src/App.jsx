@@ -1,7 +1,7 @@
 // src/App.jsx
 
 import React, { useState } from 'react';
-import { Routes, Route, useParams } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useParams, Outlet } from 'react-router-dom';
 
 // Import all your pages
 import StudentDashboard from './pages/StudentDashboard';
@@ -57,42 +57,45 @@ function App() {
   };
 
   return (
-    <div
-      className="min-h-screen bg-slate-100 font-sans text-slate-800"
-      onClick={handleFirstInteraction}
-    >
-      <Routes>
-        <Route path="*" element={<Header />} />
-      </Routes>
-      
-      <main className="p-4 sm:p-8">
+    <BrowserRouter>
+      <div
+        className="min-h-screen bg-slate-100 font-sans text-slate-800"
+        onClick={handleFirstInteraction}
+      >
         <Routes>
-          <Route path="/" element={<StudentDashboard audioUnlocked={audioUnlocked} />} />
-          <Route path="/student/:studentId" element={<StudentPage />} />
-          <Route path="/student/:studentId/module/basketball-past-simple" element={<BasketballPastSimplePage />} />
-          <Route path="/student/:studentId/module/diagnostic-quiz" element={<DanendraQuizPage />} />
-          <Route path="/student/:studentId/module/k5-reading-writing" element={<K5ReadingWritingPage />} />
-          <Route path="/student/:studentId/module/k5-counting" element={<K5CountingPage />} />
-          <Route path="/student/:studentId/module/k5-reading-game" element={<K5ReadingGamePage />} />
-          <Route path="/student/:studentId/module/sulthan-refreshment" element={<SulthanQuizPage />} />
-          <Route path="/student/:studentId/module/sulthan-future-simple" element={<SulthanFutureSimplePage />} />
-          {/* ✅ THE ROUTE PATH IS NOW CORRECTED */}
-          <Route path="/student/:studentId/module/danendra-past-continuous" element={<DanendraPastContinuousPage />} />
-          <Route path="/student/:studentId/module/raja-present-simple" element={<RajaPresentSimplePage />} />
-          <Route path="/student/:studentId/module/danendra-present-perfect-simple" element={<DanendraPresentPerfectSimple />} />
-          <Route path="/student/:studentId/module/febri-lesson" element={<FebriPresentLesson />} />
-          <Route path="/student/:studentId/module/sulthan-present-perfect-simple" element={<SulthanPresentPerfectSimple />} />
-          <Route path="/student/:studentId/module/danendra-future-will-going-to" element={<DanendraFutureWillGoingTo />} />
-          <Route path="/student/:studentId/module/dodie-patronela-travel-lesson" element={<DodiePatronelaTravelLesson />} />
-          <Route path="/student/:studentId/module/danendra-modal-verbs" element={<DanendraModalVerbsLesson />} />
-          <Route path="/student/:studentId/module/danendra-present-perfect-continuous" element={<DanendraPresentPerfectContinuousLesson />} />
-          {/* Alias for older/other slug so StudentPage links still work */}
-          <Route path="/student/:studentId/module/danendrapresentperfectsimple" element={<DanendraPresentPerfectSimple />} />
+          <Route path="*" element={<Header />} />
         </Routes>
-      </main>      <footer className="text-center p-6 text-slate-400 text-xs font-sans tracking-widest">
-        <p>&copy; 2025 ESL Interactive Worksheets by Billy Dwi Nugroho</p>
-      </footer>
-    </div>
+        
+        <main className="p-4 sm:p-8">
+          <Routes>
+            <Route path="/" element={<Outlet context={{ audioUnlocked }} />}>
+              <Route index element={<StudentDashboard />} />
+              <Route path="student/:studentId" element={<StudentPage />} />
+              <Route path="student/:studentId/module/basketball-past-simple" element={<BasketballPastSimplePage />} />
+              <Route path="student/:studentId/module/diagnostic-quiz" element={<DanendraQuizPage />} />
+              <Route path="student/:studentId/module/k5-reading-writing" element={<K5ReadingWritingPage />} />
+              <Route path="student/:studentId/module/k5-counting" element={<K5CountingPage />} />
+              <Route path="student/:studentId/module/k5-reading-game" element={<K5ReadingGamePage />} />
+              <Route path="student/:studentId/module/sulthan-refreshment" element={<SulthanQuizPage />} />
+              <Route path="student/:studentId/module/sulthan-future-simple" element={<SulthanFutureSimplePage />} />
+              <Route path="student/:studentId/module/danendra-past-continuous" element={<DanendraPastContinuousPage />} />
+              <Route path="student/:studentId/module/raja-present-simple" element={<RajaPresentSimplePage />} />
+              <Route path="student/:studentId/module/danendra-present-perfect-simple" element={<DanendraPresentPerfectSimple />} />
+              <Route path="student/:studentId/module/febri-lesson" element={<FebriPresentLesson />} />
+              <Route path="student/:studentId/module/sulthan-present-perfect-simple" element={<SulthanPresentPerfectSimple />} />
+              <Route path="student/:studentId/module/danendra-future-will-going-to" element={<DanendraFutureWillGoingTo />} />
+              <Route path="student/:studentId/module/dodie-patronela-travel-lesson" element={<DodiePatronelaTravelLesson />} />
+              <Route path="student/:studentId/module/danendra-modal-verbs" element={<DanendraModalVerbsLesson />} />
+              <Route path="student/:studentId/module/danendra-present-perfect-continuous" element={<DanendraPresentPerfectContinuousLesson />} />
+              <Route path="student/:studentId/module/danendrapresentperfectsimple" element={<DanendraPresentPerfectSimple />} />
+            </Route>
+          </Routes>
+        </main>
+        <footer className="text-center p-6 text-slate-400 text-xs font-sans tracking-widest">
+          <p>&copy; 2025 ESL Interactive Worksheets by Billy Dwi Nugroho</p>
+        </footer>
+      </div>
+    </BrowserRouter>
   );
 }
 

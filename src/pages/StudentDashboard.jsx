@@ -1,7 +1,7 @@
 // src/pages/StudentDashboard.jsx
 
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 
 // Ilustrasi SVG (tetap sama)
 const SvgLearningIsFun = () => (
@@ -27,7 +27,8 @@ const students = [
     { id: 'febri', name: 'Febri' },
 ];
 
-const StudentDashboard = ({ audioUnlocked }) => {
+const StudentDashboard = () => {
+    const { audioUnlocked } = useOutletContext();
     const audioRef = useRef(null);
 
     useEffect(() => {
