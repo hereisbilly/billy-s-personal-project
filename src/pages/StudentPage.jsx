@@ -27,6 +27,7 @@ const allModules = {
     'dodie-patronela-travel-lesson': { name: 'Module: Conversational English for Travel' },
     'danendra-modal-verbs': { name: 'Module: Modal Verbs' },
     'danendra-present-perfect-continuous': { name: 'Module: Present Perfect Continuous' },
+    'dodie-patronela-problems-lesson': { name: 'Module: Travel English: Handling Problems' },
 };
 
 // ... (The rest of the file stays exactly the same)

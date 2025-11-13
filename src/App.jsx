@@ -22,6 +22,7 @@ import SulthanPresentPerfectSimple from './pages/SulthanPresentPerfectSimple';
 import DodiePatronelaTravelLesson from './pages/DodiePatronelaTravelLesson';
 import DanendraModalVerbsLesson from './pages/DanendraModalVerbsLesson';
 import DanendraPresentPerfectContinuousLesson from './pages/DanendraPresentPerfectContinuousLesson';
+import DodiePatronelaProblemsLesson from './pages/DodiePatronelaProblemsLesson';
 
 const Header = () => {
   const params = useParams();
@@ -69,6 +70,7 @@ function App() {
             <Route path="student/:studentId/module/dodie-patronela-travel-lesson" element={<DodiePatronelaTravelLesson />} />
             <Route path="student/:studentId/module/danendra-modal-verbs" element={<DanendraModalVerbsLesson />} />
             <Route path="student/:studentId/module/danendra-present-perfect-continuous" element={<DanendraPresentPerfectContinuousLesson />} />
+            <Route path="student/:studentId/module/dodie-patronela-problems-lesson" element={<DodiePatronelaProblemsLesson />} />
             {/* Alias for older/other slug so StudentPage links still work */}
             <Route path="student/:studentId/module/danendrapresentperfectsimple" element={<DanendraPresentPerfectSimple />} />
           </Routes>
