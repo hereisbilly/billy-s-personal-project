@@ -2,13 +2,13 @@ import React from 'react';
 import { WorksheetCard, BigButton } from '../components/common';
 import { useNavigate } from 'react-router-dom';
 
-const DanendraModalVerbsLesson = () => {
+const K5ReadingGame = () => {
     const navigate = useNavigate();
 
     return (
         <WorksheetCard>
             <div className="text-center">
-                <h1 className="text-3xl font-bold text-slate-800 mb-4">Modal Verbs Lesson</h1>
+                <h1 className="text-3xl font-bold text-slate-800 mb-4">Picture Word Match Game (K5)</h1>
                 <p className="text-slate-600 mb-8">
                     This lesson is not yet implemented.
                 </p>
@@ -20,4 +20,4 @@ const DanendraModalVerbsLesson = () => {
     );
 };
 
-export default DanendraModalVerbsLesson;
+export default K5ReadingGame;

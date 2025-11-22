@@ -24,6 +24,8 @@ const allModules = {
     'danendra-present-perfect-simple': { name: 'Module: Present Perfect Simple (Experiences)' },
     'sulthan-present-perfect-simple': { name: 'Module: Present Perfect Simple (Experiences)' },
     'danendra-future-will-going-to': { name: 'Module: Future Tenses (Will vs Going To)' },
+    'danendra-past-perfect-simple': { name: 'Module: Past Perfect Simple' },
+    'danendra-passive-voice': { name: 'Module: Passive Voice' },
     'dodie-patronela-travel-lesson': { name: 'Module: Conversational English for Travel' },
     'danendra-modal-verbs': { name: 'Module: Modal Verbs' },
     'danendra-present-perfect-continuous': { name: 'Module: Present Perfect Continuous' },
