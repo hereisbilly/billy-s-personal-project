@@ -1,8 +1,6 @@
 // src/studentData.js
 
-// This function returns the student data object.
-// It's structured this way to be easily expandable in the future.
-export const loadStudentData = () => ({
+const studentData = {
     danendra: {
       name: 'Danendra',
       modules: [
@@ -14,6 +12,8 @@ export const loadStudentData = () => ({
         'danendra-present-perfect-continuous',
         'danendra-past-perfect-simple',
         'danendra-passive-voice',
+        'danendra-conditionals',
+        'danendra-relative-clauses',
       ],
     },
     sulthan: {
@@ -30,16 +30,21 @@ export const loadStudentData = () => ({
       modules: ['raja-present-simple'],
     },
     'dodie-patronela': {
-      name: 'Dodie Patronela',
+      name: 'Dodie Petronela',
       modules: [
         'dodie-patronela-travel-lesson',
         'dodie-patronela-problems-lesson',
         'dodie-patronela-shopping-lesson',
+        'dodie-patronela-directions',
       ],
     },
     k5: {
       name: 'K5 Students',
       modules: ['k5-reading-writing', 'k5-counting', 'k5-reading-game'],
     },
-  });
+  };
   
+  // This function returns the entire student data object.
+  export const loadStudentData = () => {
+    return studentData;
+  };

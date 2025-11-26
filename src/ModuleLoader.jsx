@@ -6,6 +6,8 @@ import { WorksheetCard } from './components/common';
 const moduleMap = {
     'danendra-past-perfect-simple': lazy(() => import('./pages/DanendraPastPerfectSimpleLesson')),
     'danendra-passive-voice': lazy(() => import('./pages/DanendraPassiveVoiceLesson')),
+    'danendra-conditionals': lazy(() => import('./pages/DanendraConditionalsLesson')),
+    'danendra-relative-clauses': lazy(() => import('./pages/DanendraRelativeClausesLesson')),
     // Add other existing and future modules here...
     'diagnostic-quiz': lazy(() => import('./pages/DiagnosticQuiz')),
     'danendra-past-continuous': lazy(() => import('./pages/DanendraPastContinuousLesson')),
@@ -21,6 +23,7 @@ const moduleMap = {
     'dodie-patronela-travel-lesson': lazy(() => import('./pages/DodiePatronelaTravelLesson')),
     'dodie-patronela-problems-lesson': lazy(() => import('./pages/DodiePatronelaProblemsLesson')),
     'dodie-patronela-shopping-lesson': lazy(() => import('./pages/DodiePatronelaShoppingLesson')),
+    'dodie-patronela-directions': lazy(() => import('./pages/DodiePetronelaDirectionsLesson')),
     'k5-reading-writing': lazy(() => import('./pages/K5ReadingWriting')),
     'k5-counting': lazy(() => import('./pages/K5Counting')),
     'k5-reading-game': lazy(() => import('./pages/K5ReadingGame')),
