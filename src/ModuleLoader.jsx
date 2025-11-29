@@ -11,7 +11,7 @@ const moduleMap = {
     // Add other existing and future modules here...
     'diagnostic-quiz': lazy(() => import('./pages/DiagnosticQuiz')),
     'danendra-past-continuous': lazy(() => import('./pages/DanendraPastContinuousLesson')),
-    'danendra-present-perfect-simple': lazy(() => import('./pages/DanendraPresentPerfectSimpleLesson')),
+    'danendra-present-perfect-simple': lazy(() => import('./pages/DanendraPresentPerfectSimple')),
     'danendra-future-will-going-to': lazy(() => import('./pages/DanendraFutureWillGoingToLesson')),
     'danendra-modal-verbs': lazy(() => import('./pages/DanendraModalVerbsLesson')),
     'danendra-present-perfect-continuous': lazy(() => import('./pages/DanendraPresentPerfectContinuousLesson')),

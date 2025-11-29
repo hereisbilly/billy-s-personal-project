@@ -28,19 +28,14 @@ const DanendraPresentPerfectSimple = () => {
     const [readingFeedback, setReadingFeedback] = useState({});
     const [jumbledAnswers, setJumbledAnswers] = useState({});
     const [jumbledFeedback, setJumbledFeedback] = useState({});
-    const [gameState, setGameState] = useState({ currentIndex: 0, selectedAnswer: null, feedback: null, userAnswers: [] });
-    const [gameFinished, setGameFinished] = useState(false);
-    const [reviewState, setReviewState] = useState({ currentIndex: 0, selectedAnswer: null, feedback: null, userAnswers: [] });
     const [quizFinished, setQuizFinished] = useState(false);
 
-    // Quiz state (fixes "quizState is not defined" runtime error)
     const [quizState, setQuizState] = useState({
         currentIndex: 0,
         selectedAnswer: null,
         feedback: null,
         userAnswers: []
     });
-    // NOTE: quizFinished is declared later with the unified quiz state — do not redeclare here.
 
     // --- Lesson Data (Present Perfect Simple) ---
     const story = "My name is Danendra. I have been a graphic designer for five years. I have worked from home since 2020. This month I have finished three projects. I have visited three countries this year. My friend Leo has lived in this city for ten years. We have seen many changes in our neighborhood. My wife, Maria, has met many people through her job. She has been very busy lately, but she has enjoyed her work.";
