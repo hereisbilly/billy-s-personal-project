@@ -17,6 +17,9 @@ const moduleMap = {
     'level-1-sentence-structure': lazy(() => import('./pages/Level1SentenceStructureLesson')),
     'level-1-demonstratives': lazy(() => import('./pages/Level1DemonstrativesLesson')),
     'level-1-prepositions': lazy(() => import('./pages/Level1PrepositionsLesson')),
+    'level-1-possessives': lazy(() => import('./pages/Level1PossessiveAdjectivesLesson')),
+    'level-1-yes-no-questions': lazy(() => import('./pages/Level1YesNoQuestionsLesson')),
+    'level-1-wh-questions': lazy(() => import('./pages/Level1WhQuestionsLesson')),
     // Level 3: Pre-Intermediate
     'level-3-was-were': lazy(() => import('./pages/Level3WasWereLesson')),
     'level-3-past-simple': lazy(() => import('./pages/Level3PastSimpleLesson')),

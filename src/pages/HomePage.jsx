@@ -13,6 +13,9 @@ const allModules = {
     'level-1-sentence-structure': { name: 'Basic Sentence Structure' },
     'level-1-demonstratives': { name: 'Demonstratives: This/That' },
     'level-1-prepositions': { name: 'Prepositions of Place' },
+    'level-1-possessives': { name: 'Possessive Adjectives' },
+    'level-1-yes-no-questions': { name: 'Yes/No Questions with "To Be"' },
+    'level-1-wh-questions': { name: 'Wh- Questions (What, Where, Who)' },
     // Level 3
     'level-3-was-were': { name: 'Past Simple "To Be": Was/Were' },
     'level-3-past-simple': { name: 'Past Simple: Regular & Irregular' },
@@ -26,7 +29,7 @@ const difficultyLevels = [
         icon: <BookOpen size={32} />,
         color: 'green',
         description: 'Survival English, forming basic correct sentences.',
-        modules: ['level-1-alphabet', 'level-1-numbers', 'level-1-greetings', 'level-1-articles', 'level-1-nouns', 'level-1-pronouns', 'level-1-tobe', 'level-1-sentence-structure', 'level-1-demonstratives', 'level-1-prepositions']
+        modules: ['level-1-alphabet', 'level-1-numbers', 'level-1-greetings', 'level-1-articles', 'level-1-nouns', 'level-1-pronouns', 'level-1-tobe', 'level-1-sentence-structure', 'level-1-demonstratives', 'level-1-prepositions', 'level-1-possessives', 'level-1-yes-no-questions', 'level-1-wh-questions']
     },
     {
         name: 'Level 3: Pre-Intermediate',
