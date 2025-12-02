@@ -1,42 +1,93 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { WorksheetCard } from '../components/common';
+import { BookOpen, BarChart2 } from 'lucide-react';
 
-const lessons = [
-    { id: 'danendra-past-perfect-simple', title: 'Danendra - Past Perfect Simple' },
-    { id: 'danendra-passive-voice', title: 'Danendra - Passive Voice' },
-    { id: 'diagnostic-quiz', title: 'Diagnostic Quiz' },
-    { id: 'danendra-past-continuous', title: 'Danendra - Past Continuous' },
-    { id: 'danendra-present-perfect-simple', title: 'Danendra - Present Perfect Simple' },
-    { id: 'danendra-future-will-going-to', title: 'Danendra - Future (Will vs Going to)' },
-    { id: 'danendra-modal-verbs', title: 'Danendra - Modal Verbs' },
-    { id: 'danendra-present-perfect-continuous', title: 'Danendra - Present Perfect Continuous' },
-    { id: 'sulthan-refreshment', title: "Sulthan's Refreshment Quiz" },
-    { id: 'sulthan-future-simple', title: 'Sulthan - Future Simple' },
-    { id: 'sulthan-present-perfect-simple', title: 'Sulthan - Present Perfect Simple' },
-    { id: 'basketball-past-simple', title: 'Basketball - Past Simple' },
-    { id: 'raja-present-simple', title: 'Raja - Present Simple' },
-    { id: 'dodie-patronela-travel-lesson', title: 'Dodie & Patronela - Travel' },
-    { id: 'dodie-patronela-problems-lesson', title: 'Dodie & Patronela - Problems' },
-    { id: 'dodie-patronela-shopping-lesson', title: 'Dodie & Patronela - Shopping' },
-    { id: 'k5-reading-writing', title: 'K5 - Reading & Writing' },
-    { id: 'k5-counting', title: 'K5 - Counting' },
-    { id: 'k5-reading-game', title: 'K5 - Reading Game' },
+const allModules = {
+    'level-1-alphabet': { name: 'The Alphabet & Pronunciation' },
+    'level-1-numbers': { name: 'Numbers: Cardinals & Ordinals' },
+    'level-1-greetings': { name: 'Greetings & Introductions' },
+    'level-1-articles': { name: 'Articles: A / An / The' },
+    'level-1-nouns': { name: 'Nouns: Singular vs. Plural' },
+    'level-1-pronouns': { name: 'Subject Pronouns' },
+    'level-1-tobe': { name: 'The Verb "To Be"' },
+    'level-1-sentence-structure': { name: 'Basic Sentence Structure' },
+    // Level 3
+    'level-3-was-were': { name: 'Past Simple "To Be": Was/Were' },
+    'level-3-past-simple': { name: 'Past Simple: Regular & Irregular' },
+    'level-3-past-simple-negative': { name: 'Past Simple: Negative & Questions' },
+    'level-3-time-expressions': { name: 'Past Time Expressions' },
+};
+
+const difficultyLevels = [
+    {
+        name: 'Level 1: Absolute Beginner',
+        icon: <BookOpen size={32} />,
+        color: 'green',
+        description: 'Survival English, forming basic correct sentences.',
+        modules: ['level-1-alphabet', 'level-1-numbers', 'level-1-greetings', 'level-1-articles', 'level-1-nouns', 'level-1-pronouns', 'level-1-tobe', 'level-1-sentence-structure']
+    },
+    {
+        name: 'Level 3: Pre-Intermediate',
+        icon: <BarChart2 size={32} />,
+        color: 'blue',
+        description: 'Talking about the past and future, expanding sentence complexity.',
+        modules: ['level-3-was-were', 'level-3-past-simple', 'level-3-past-simple-negative', 'level-3-time-expressions']
+    },
 ];
+
+const colorClasses = {
+    green: { bg: 'bg-green-500', text: 'text-green-800', border: 'border-green-200', sectionBg: 'bg-green-50' },
+    blue: { bg: 'bg-blue-500', text: 'text-blue-800', border: 'border-blue-200', sectionBg: 'bg-blue-50' },
+    violet: { bg: 'bg-violet-500', text: 'text-violet-800', border: 'border-violet-200', sectionBg: 'bg-violet-50' },
+    amber: { bg: 'bg-amber-500', text: 'text-amber-800', border: 'border-amber-200', sectionBg: 'bg-amber-50' },
+};
 
 const HomePage = () => {
     return (
-        <div className="bg-slate-100 min-h-screen p-8">
-            <div className="max-w-2xl mx-auto">
-                <WorksheetCard>
-                    <h1 className="text-3xl font-bold text-slate-800 mb-6 text-center">ESL Lessons</h1>
-                    <ul className="space-y-3">
-                        {lessons.map(lesson => (
-                            <li key={lesson.id}><Link to={`/lesson/${lesson.id}`} className="block p-3 bg-slate-50 hover:bg-blue-100 rounded-lg text-blue-600 font-semibold transition-colors">{lesson.title}</Link></li>
-                        ))}
-                    </ul>
-                </WorksheetCard>
-            </div>
+        <div className="min-h-screen bg-slate-50 p-4 sm:p-8">
+            <header className="text-center mb-12">
+                <h1 className="text-4xl sm:text-5xl font-black text-slate-800 tracking-tight">
+                    Choose Your Difficulty
+                </h1>
+                <p className="text-lg text-slate-600 mt-2">
+                    Select a lesson from any level to begin.
+                </p>
+            </header>
+
+            <main className="max-w-7xl mx-auto space-y-10">
+                {difficultyLevels.map(level => {
+                    const colors = colorClasses[level.color];
+                    return (
+                        <section key={level.name} className={`p-6 rounded-2xl shadow-md ${colors.sectionBg}`}>
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className={`flex-shrink-0 w-16 h-16 rounded-full ${colors.bg} text-white flex items-center justify-center`}>
+                                    {level.icon}
+                                </div>
+                                <div>
+                                    <h2 className={`text-3xl font-bold ${colors.text}`}>{level.name}</h2>
+                                    <p className="text-slate-500">{level.description}</p>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                                {level.modules.map(moduleId => (
+                                    <Link
+                                        key={moduleId}
+                                        to={`/lesson/${moduleId}`}
+                                        className={`block p-4 bg-white text-slate-700 font-bold text-center border-b-4 ${colors.border} rounded-xl hover:bg-slate-50 hover:-translate-y-1 transition-all duration-200`}
+                                    >
+                                        {allModules[moduleId]?.name || 'Unknown Lesson'}
+                                    </Link>
+                                ))}
+                            </div>
+                        </section>
+                    );
+                })}
+            </main>
+
+            <footer className="text-center mt-12">
+                <p className="text-slate-500">Looking for conversational practice? Access the <Link to="/student/dodie-patronela" className="text-rose-500 font-bold hover:underline">Travel English Module</Link>.</p>
+            </footer>
         </div>
     );
 };

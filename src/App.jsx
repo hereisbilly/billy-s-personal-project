@@ -1,17 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import StudentSelectionPage from './pages/StudentSelectionPage';
-import StudentLessonPage from './pages/StudentLessonPage';
+import HomePage from './pages/HomePage';
+import StudentPage from './pages/StudentPage'; // Use StudentPage
 import ModuleLoader from './ModuleLoader';
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<StudentSelectionPage />} />
-        <Route path="/student/:studentId" element={<StudentLessonPage />} />
-        <Route path="/lesson/:moduleId" element={<ModuleLoader />} />
-      </Routes>
+      <div className="bg-slate-100 min-h-screen">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/student/:studentId" element={<StudentPage />} /> {/* Use StudentPage here */}
+          <Route path="/lesson/:moduleId" element={<ModuleLoader />} />
+        </Routes>
+      </div>
     </Router>
   );
 }

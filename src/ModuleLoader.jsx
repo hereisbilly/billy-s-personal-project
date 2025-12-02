@@ -2,31 +2,24 @@ import React, { Suspense, lazy } from 'react';
 import { useParams } from 'react-router-dom';
 import { WorksheetCard } from './components/common';
 
-// Create a map of module IDs to their dynamic import paths.
 const moduleMap = {
-    'danendra-past-perfect-simple': lazy(() => import('./pages/DanendraPastPerfectSimpleLesson')),
-    'danendra-passive-voice': lazy(() => import('./pages/DanendraPassiveVoiceLesson')),
-    'danendra-conditionals': lazy(() => import('./pages/DanendraConditionalsLesson')),
-    'danendra-relative-clauses': lazy(() => import('./pages/DanendraRelativeClausesLesson')),
-    // Add other existing and future modules here...
-    'diagnostic-quiz': lazy(() => import('./pages/DiagnosticQuiz')),
-    'danendra-past-continuous': lazy(() => import('./pages/DanendraPastContinuousLesson')),
-    'danendra-present-perfect-simple': lazy(() => import('./pages/DanendraPresentPerfectSimple')),
-    'danendra-future-will-going-to': lazy(() => import('./pages/DanendraFutureWillGoingToLesson')),
-    'danendra-modal-verbs': lazy(() => import('./pages/DanendraModalVerbsLesson')),
-    'danendra-present-perfect-continuous': lazy(() => import('./pages/DanendraPresentPerfectContinuousLesson')),
-    'sulthan-refreshment': lazy(() => import('./pages/SulthanRefreshment')),
-    'sulthan-future-simple': lazy(() => import('./pages/SulthanFutureSimpleLesson')),
-    'sulthan-present-perfect-simple': lazy(() => import('./pages/SulthanPresentPerfectSimpleLesson')),
-    'basketball-past-simple': lazy(() => import('./pages/BasketballPastSimple')),
-    'raja-present-simple': lazy(() => import('./pages/RajaPresentSimpleLesson')),
-    'dodie-patronela-travel-lesson': lazy(() => import('./pages/DodiePatronelaTravelLesson')),
     'dodie-patronela-problems-lesson': lazy(() => import('./pages/DodiePatronelaProblemsLesson')),
     'dodie-patronela-shopping-lesson': lazy(() => import('./pages/DodiePatronelaShoppingLesson')),
     'dodie-patronela-directions': lazy(() => import('./pages/DodiePetronelaDirectionsLesson')),
-    'k5-reading-writing': lazy(() => import('./pages/K5ReadingWriting')),
-    'k5-counting': lazy(() => import('./pages/K5Counting')),
-    'k5-reading-game': lazy(() => import('./pages/K5ReadingGame')),
+    // Level 1: Absolute Beginner
+    'level-1-alphabet': lazy(() => import('./pages/Level1AlphabetLesson')),
+    'level-1-numbers': lazy(() => import('./pages/Level1NumbersLesson')),
+    'level-1-greetings': lazy(() => import('./pages/Level1GreetingsLesson')),
+    'level-1-articles': lazy(() => import('./pages/Level1ArticlesLesson')),
+    'level-1-nouns': lazy(() => import('./pages/Level1NounsLesson')),
+    'level-1-pronouns': lazy(() => import('./pages/Level1PronounsLesson')),
+    'level-1-tobe': lazy(() => import('./pages/Level1ToBeLesson')),
+    'level-1-sentence-structure': lazy(() => import('./pages/Level1SentenceStructureLesson')),
+    // Level 3: Pre-Intermediate
+    'level-3-was-were': lazy(() => import('./pages/Level3WasWereLesson')),
+    'level-3-past-simple': lazy(() => import('./pages/Level3PastSimpleLesson')),
+    'level-3-past-simple-negative': lazy(() => import('./pages/Level3PastSimpleNegativeLesson')),
+    'level-3-time-expressions': lazy(() => import('./pages/Level3TimeExpressionsLesson')),
 };
 
 const ModuleLoader = () => {
