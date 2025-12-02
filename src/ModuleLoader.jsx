@@ -15,6 +15,8 @@ const moduleMap = {
     'level-1-pronouns': lazy(() => import('./pages/Level1PronounsLesson')),
     'level-1-tobe': lazy(() => import('./pages/Level1ToBeLesson')),
     'level-1-sentence-structure': lazy(() => import('./pages/Level1SentenceStructureLesson')),
+    'level-1-demonstratives': lazy(() => import('./pages/Level1DemonstrativesLesson')),
+    'level-1-prepositions': lazy(() => import('./pages/Level1PrepositionsLesson')),
     // Level 3: Pre-Intermediate
     'level-3-was-were': lazy(() => import('./pages/Level3WasWereLesson')),
     'level-3-past-simple': lazy(() => import('./pages/Level3PastSimpleLesson')),
