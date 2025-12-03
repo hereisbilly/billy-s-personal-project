@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Award, BarChart2, Zap } from 'lucide-react';
+import { BookOpen, Award, BarChart2, Zap, Rocket } from 'lucide-react';
 
 const allModules = {
     'level-1-alphabet': { name: 'The Alphabet & Pronunciation' },
@@ -26,6 +26,11 @@ const allModules = {
     'level-2-like-love-hate': { name: 'Like/Love/Hate + V-ing' },
     'level-2-object-pronouns': { name: 'Object Pronouns' },
     'level-2-possessive-pronouns': { name: 'Possessive Pronouns' },
+    'level-2-imperatives': { name: 'Imperatives (Commands)' },
+    'level-2-countable-uncountable': { name: 'Countable & Uncountable Nouns' },
+    'level-2-quantifiers-basic': { name: 'Basic Quantifiers (some, any...)' },
+    'level-2-prepositions-time': { name: 'Prepositions of Time (in, on, at)' },
+    'level-2-wh-questions-present-simple': { name: 'Wh- Questions (Present Simple)' },
     // Level 3
     'level-3-was-were': { name: 'Past Simple "To Be": Was/Were' },
     'level-3-past-simple': { name: 'Past Simple: Regular & Irregular' },
@@ -56,6 +61,22 @@ const allModules = {
     'level-4-reported-speech': { name: 'Reported Speech (Statements)' },
     'level-4-quantifiers': { name: 'Advanced Quantifiers' },
     'level-4-verb-patterns': { name: 'Verb Patterns (Gerund/Infinitive)' },
+    // Level 5
+    'level-5-present-perfect-continuous': { name: 'Present Perfect Continuous' },
+    'level-5-past-perfect-simple': { name: 'Past Perfect Simple' },
+    'level-5-past-perfect-continuous': { name: 'Past Perfect Continuous' },
+    'level-5-future-continuous': { name: 'Future Continuous' },
+    'level-5-future-perfect': { name: 'Future Perfect & Continuous' },
+    'level-5-conditional-3': { name: 'Third Conditional' },
+    'level-5-mixed-conditionals': { name: 'Mixed Conditionals' },
+    'level-5-wish-if-only': { name: 'Wish / If Only' },
+    'level-5-modals-deduction-past': { name: 'Modals of Deduction (Past)' },
+    'level-5-modals-past': { name: 'Modals in the Past (Regret)' },
+    'level-5-relative-clauses-non-defining': { name: 'Non-Defining Relative Clauses' },
+    'level-5-participle-clauses': { name: 'Participle Clauses' },
+    'level-5-passive-voice-advanced': { name: 'Passive Voice (Advanced)' },
+    'level-5-reported-speech-advanced': { name: 'Reported Speech (Adv.)' },
+    'level-5-inversion': { name: 'Inversion for Emphasis' },
 };
 
 const difficultyLevels = [
@@ -71,7 +92,7 @@ const difficultyLevels = [
         icon: <Award size={32} />,
         color: 'amber',
         description: 'Communicating in the present about daily life.',
-        modules: ['level-2-present-simple', 'level-2-adjectives', 'level-2-adverbs-frequency', 'level-2-there-is-are', 'level-2-have-got', 'level-2-can-cant', 'level-2-like-love-hate', 'level-2-object-pronouns', 'level-2-possessive-pronouns']
+        modules: ['level-2-present-simple', 'level-2-adjectives', 'level-2-adverbs-frequency', 'level-2-there-is-are', 'level-2-have-got', 'level-2-can-cant', 'level-2-like-love-hate', 'level-2-object-pronouns', 'level-2-possessive-pronouns', 'level-2-imperatives', 'level-2-countable-uncountable', 'level-2-quantifiers-basic', 'level-2-prepositions-time', 'level-2-wh-questions-present-simple']
     },
     {
         name: 'Level 3: Pre-Intermediate',
@@ -87,6 +108,13 @@ const difficultyLevels = [
         description: 'Nuance, continuous aspects, and hypothesis.',
         modules: ['level-4-present-perfect', 'level-4-pp-vs-ps', 'level-4-for-since', 'level-4-past-continuous', 'level-4-pc-vs-ps', 'level-4-will', 'level-4-will-vs-going-to', 'level-4-modals-deduction', 'level-4-conditionals-0-1', 'level-4-conditional-2', 'level-4-relative-clauses', 'level-4-passive-voice', 'level-4-reported-speech', 'level-4-quantifiers', 'level-4-verb-patterns']
     },
+    {
+        name: 'Level 5: Upper-Intermediate',
+        icon: <Rocket size={32} />,
+        color: 'rose',
+        description: 'Perfect aspects, advanced clause structures, and subtlety.',
+        modules: ['level-5-present-perfect-continuous', 'level-5-past-perfect-simple', 'level-5-past-perfect-continuous', 'level-5-future-continuous', 'level-5-future-perfect', 'level-5-conditional-3', 'level-5-mixed-conditionals', 'level-5-wish-if-only', 'level-5-modals-deduction-past', 'level-5-modals-past', 'level-5-relative-clauses-non-defining', 'level-5-participle-clauses', 'level-5-passive-voice-advanced', 'level-5-reported-speech-advanced', 'level-5-inversion']
+    },
 ];
 
 const colorClasses = {
@@ -94,6 +122,7 @@ const colorClasses = {
     blue: { bg: 'bg-blue-500', text: 'text-blue-800', border: 'border-blue-200', sectionBg: 'bg-blue-50' },
     violet: { bg: 'bg-violet-500', text: 'text-violet-800', border: 'border-violet-200', sectionBg: 'bg-violet-50' },
     amber: { bg: 'bg-amber-500', text: 'text-amber-800', border: 'border-amber-200', sectionBg: 'bg-amber-50' },
+    rose: { bg: 'bg-rose-500', text: 'text-rose-800', border: 'border-rose-200', sectionBg: 'bg-rose-50' },
 };
 
 const HomePage = () => {

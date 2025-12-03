@@ -30,6 +30,11 @@ const moduleMap = {
     'level-2-like-love-hate': lazy(() => import('./pages/Level2LikeLoveHateLesson')),
     'level-2-object-pronouns': lazy(() => import('./pages/Level2ObjectPronounsLesson')),
     'level-2-possessive-pronouns': lazy(() => import('./pages/Level2PossessivePronounsLesson')),
+    'level-2-imperatives': lazy(() => import('./pages/Level2ImperativesLesson')),
+    'level-2-countable-uncountable': lazy(() => import('./pages/Level2CountableUncountableLesson')),
+    'level-2-quantifiers-basic': lazy(() => import('./pages/Level2QuantifiersBasicLesson')),
+    'level-2-prepositions-time': lazy(() => import('./pages/Level2PrepositionsTimeLesson')),
+    'level-2-wh-questions-present-simple': lazy(() => import('./pages/Level2WhQuestionsPresentSimpleLesson')),
     // Level 3: Pre-Intermediate
     'level-3-was-were': lazy(() => import('./pages/Level3WasWereLesson')),
     'level-3-past-simple': lazy(() => import('./pages/Level3PastSimpleLesson')),
@@ -60,6 +65,22 @@ const moduleMap = {
     'level-4-reported-speech': lazy(() => import('./pages/Level4ReportedSpeechLesson')),
     'level-4-quantifiers': lazy(() => import('./pages/Level4QuantifiersLesson')),
     'level-4-verb-patterns': lazy(() => import('./pages/Level4VerbPatternsLesson')),
+    // Level 5: Upper-Intermediate
+    'level-5-present-perfect-continuous': lazy(() => import('./pages/Level5PresentPerfectContinuousLesson')),
+    'level-5-past-perfect-simple': lazy(() => import('./pages/Level5PastPerfectSimpleLesson')),
+    'level-5-past-perfect-continuous': lazy(() => import('./pages/Level5PastPerfectContinuousLesson')),
+    'level-5-future-continuous': lazy(() => import('./pages/Level5FutureContinuousLesson')),
+    'level-5-future-perfect': lazy(() => import('./pages/Level5FuturePerfectLesson')),
+    'level-5-conditional-3': lazy(() => import('./pages/Level5Conditional3Lesson')),
+    'level-5-mixed-conditionals': lazy(() => import('./pages/Level5MixedConditionalsLesson')),
+    'level-5-wish-if-only': lazy(() => import('./pages/Level5WishIfOnlyLesson')),
+    'level-5-modals-deduction-past': lazy(() => import('./pages/Level5ModalsDeductionPastLesson')),
+    'level-5-modals-past': lazy(() => import('./pages/Level5ModalsPastLesson')),
+    'level-5-relative-clauses-non-defining': lazy(() => import('./pages/Level5RelativeClausesNonDefiningLesson')),
+    'level-5-participle-clauses': lazy(() => import('./pages/Level5ParticipleClausesLesson')),
+    'level-5-passive-voice-advanced': lazy(() => import('./pages/Level5PassiveVoiceAdvancedLesson')),
+    'level-5-reported-speech-advanced': lazy(() => import('./pages/Level5ReportedSpeechAdvancedLesson')),
+    'level-5-inversion': lazy(() => import('./pages/Level5InversionLesson')),
 };
 
 const ModuleLoader = () => {
