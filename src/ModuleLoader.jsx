@@ -26,6 +26,10 @@ const moduleMap = {
     'level-2-adverbs-frequency': lazy(() => import('./pages/Level2AdverbsFrequencyLesson')),
     'level-2-there-is-are': lazy(() => import('./pages/Level2ThereIsThereAreLesson')),
     'level-2-have-got': lazy(() => import('./pages/Level2HaveGotLesson')),
+    'level-2-can-cant': lazy(() => import('./pages/Level2CanCantLesson')),
+    'level-2-like-love-hate': lazy(() => import('./pages/Level2LikeLoveHateLesson')),
+    'level-2-object-pronouns': lazy(() => import('./pages/Level2ObjectPronounsLesson')),
+    'level-2-possessive-pronouns': lazy(() => import('./pages/Level2PossessivePronounsLesson')),
     // Level 3: Pre-Intermediate
     'level-3-was-were': lazy(() => import('./pages/Level3WasWereLesson')),
     'level-3-past-simple': lazy(() => import('./pages/Level3PastSimpleLesson')),

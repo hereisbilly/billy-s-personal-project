@@ -22,6 +22,10 @@ const allModules = {
     'level-2-adverbs-frequency': { name: 'Adverbs of Frequency' },
     'level-2-there-is-are': { name: 'There is / There are' },
     'level-2-have-got': { name: 'Have / Has Got' },
+    'level-2-can-cant': { name: 'Can / Can\'t (Ability)' },
+    'level-2-like-love-hate': { name: 'Like/Love/Hate + V-ing' },
+    'level-2-object-pronouns': { name: 'Object Pronouns' },
+    'level-2-possessive-pronouns': { name: 'Possessive Pronouns' },
     // Level 3
     'level-3-was-were': { name: 'Past Simple "To Be": Was/Were' },
     'level-3-past-simple': { name: 'Past Simple: Regular & Irregular' },
@@ -67,7 +71,7 @@ const difficultyLevels = [
         icon: <Award size={32} />,
         color: 'amber',
         description: 'Communicating in the present about daily life.',
-        modules: ['level-2-present-simple', 'level-2-adjectives', 'level-2-adverbs-frequency', 'level-2-there-is-are', 'level-2-have-got']
+        modules: ['level-2-present-simple', 'level-2-adjectives', 'level-2-adverbs-frequency', 'level-2-there-is-are', 'level-2-have-got', 'level-2-can-cant', 'level-2-like-love-hate', 'level-2-object-pronouns', 'level-2-possessive-pronouns']
     },
     {
         name: 'Level 3: Pre-Intermediate',
