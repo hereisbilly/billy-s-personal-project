@@ -89,6 +89,11 @@ const allModules = {
     'level-6-advanced-conjunctions': { name: 'Advanced Discourse Markers' },
     'level-6-parallelism': { name: 'Parallelism & Balance' },
     'level-6-stylistic-grammar': { name: 'Stylistic Grammar' },
+    'level-6-register-tone': { name: 'Register & Tone' },
+    'level-6-advanced-articles': { name: 'Advanced Article Usage' },
+    'level-6-gerund-infinitive-advanced': { name: 'Gerund vs. Infinitive (Adv.)' },
+    'level-6-complex-noun-phrases': { name: 'Complex Noun Phrases' },
+    'level-6-exceptions-idioms': { name: 'Exceptions & Idioms' },
 };
 
 const difficultyLevels = [
@@ -132,7 +137,7 @@ const difficultyLevels = [
         icon: <Crown size={32} />,
         color: 'sky',
         description: 'Stylistic nuance, register, and mastering exceptions.',
-        modules: ['level-6-advanced-aspects', 'level-6-subjunctive', 'level-6-inversion-advanced', 'level-6-ellipsis-substitution', 'level-6-fronting-emphasis', 'level-6-advanced-conditionals', 'level-6-advanced-phrasal-verbs', 'level-6-advanced-conjunctions', 'level-6-parallelism', 'level-6-stylistic-grammar']
+        modules: ['level-6-advanced-aspects', 'level-6-subjunctive', 'level-6-inversion-advanced', 'level-6-ellipsis-substitution', 'level-6-fronting-emphasis', 'level-6-advanced-conditionals', 'level-6-advanced-phrasal-verbs', 'level-6-advanced-conjunctions', 'level-6-parallelism', 'level-6-stylistic-grammar', 'level-6-register-tone', 'level-6-advanced-articles', 'level-6-gerund-infinitive-advanced', 'level-6-complex-noun-phrases', 'level-6-exceptions-idioms']
     },
 ];
 

@@ -93,6 +93,11 @@ const moduleMap = {
     'level-6-advanced-conjunctions': lazy(() => import('./pages/Level6AdvancedConjunctionsLesson')),
     'level-6-parallelism': lazy(() => import('./pages/Level6ParallelismLesson')),
     'level-6-stylistic-grammar': lazy(() => import('./pages/Level6StylisticGrammarLesson')),
+    'level-6-register-tone': lazy(() => import('./pages/Level6RegisterToneLesson')),
+    'level-6-advanced-articles': lazy(() => import('./pages/Level6AdvancedArticlesLesson')),
+    'level-6-gerund-infinitive-advanced': lazy(() => import('./pages/Level6GerundInfinitiveAdvancedLesson')),
+    'level-6-complex-noun-phrases': lazy(() => import('./pages/Level6ComplexNounPhrasesLesson')),
+    'level-6-exceptions-idioms': lazy(() => import('./pages/Level6ExceptionsIdiomsLesson')),
 };
 
 const ModuleLoader = () => {
