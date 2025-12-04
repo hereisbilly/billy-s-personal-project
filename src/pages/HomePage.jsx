@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Award, BarChart2, Zap, Rocket } from 'lucide-react';
+import { BookOpen, Award, BarChart2, Zap, Rocket, Crown } from 'lucide-react';
 
 const allModules = {
     'level-1-alphabet': { name: 'The Alphabet & Pronunciation' },
@@ -77,6 +77,18 @@ const allModules = {
     'level-5-passive-voice-advanced': { name: 'Passive Voice (Advanced)' },
     'level-5-reported-speech-advanced': { name: 'Reported Speech (Adv.)' },
     'level-5-inversion': { name: 'Inversion for Emphasis' },
+    'level-5-cleft-sentences': { name: 'Cleft Sentences' },
+    // Level 6
+    'level-6-advanced-aspects': { name: 'Advanced Perfect & Continuous' },
+    'level-6-subjunctive': { name: 'Subjunctive Mood' },
+    'level-6-inversion-advanced': { name: 'Advanced Inversion' },
+    'level-6-ellipsis-substitution': { name: 'Ellipsis & Substitution' },
+    'level-6-fronting-emphasis': { name: 'Fronting & Emphasis' },
+    'level-6-advanced-conditionals': { name: 'Advanced Conditional Forms' },
+    'level-6-advanced-phrasal-verbs': { name: 'Advanced Phrasal Verbs' },
+    'level-6-advanced-conjunctions': { name: 'Advanced Discourse Markers' },
+    'level-6-parallelism': { name: 'Parallelism & Balance' },
+    'level-6-stylistic-grammar': { name: 'Stylistic Grammar' },
 };
 
 const difficultyLevels = [
@@ -113,7 +125,14 @@ const difficultyLevels = [
         icon: <Rocket size={32} />,
         color: 'rose',
         description: 'Perfect aspects, advanced clause structures, and subtlety.',
-        modules: ['level-5-present-perfect-continuous', 'level-5-past-perfect-simple', 'level-5-past-perfect-continuous', 'level-5-future-continuous', 'level-5-future-perfect', 'level-5-conditional-3', 'level-5-mixed-conditionals', 'level-5-wish-if-only', 'level-5-modals-deduction-past', 'level-5-modals-past', 'level-5-relative-clauses-non-defining', 'level-5-participle-clauses', 'level-5-passive-voice-advanced', 'level-5-reported-speech-advanced', 'level-5-inversion']
+        modules: ['level-5-present-perfect-continuous', 'level-5-past-perfect-simple', 'level-5-past-perfect-continuous', 'level-5-future-continuous', 'level-5-future-perfect', 'level-5-conditional-3', 'level-5-mixed-conditionals', 'level-5-wish-if-only', 'level-5-modals-deduction-past', 'level-5-modals-past', 'level-5-relative-clauses-non-defining', 'level-5-participle-clauses', 'level-5-passive-voice-advanced', 'level-5-reported-speech-advanced', 'level-5-inversion', 'level-5-cleft-sentences']
+    },
+    {
+        name: 'Level 6: Advanced / Mastery',
+        icon: <Crown size={32} />,
+        color: 'sky',
+        description: 'Stylistic nuance, register, and mastering exceptions.',
+        modules: ['level-6-advanced-aspects', 'level-6-subjunctive', 'level-6-inversion-advanced', 'level-6-ellipsis-substitution', 'level-6-fronting-emphasis', 'level-6-advanced-conditionals', 'level-6-advanced-phrasal-verbs', 'level-6-advanced-conjunctions', 'level-6-parallelism', 'level-6-stylistic-grammar']
     },
 ];
 
@@ -123,6 +142,7 @@ const colorClasses = {
     violet: { bg: 'bg-violet-500', text: 'text-violet-800', border: 'border-violet-200', sectionBg: 'bg-violet-50' },
     amber: { bg: 'bg-amber-500', text: 'text-amber-800', border: 'border-amber-200', sectionBg: 'bg-amber-50' },
     rose: { bg: 'bg-rose-500', text: 'text-rose-800', border: 'border-rose-200', sectionBg: 'bg-rose-50' },
+    sky: { bg: 'bg-sky-500', text: 'text-sky-800', border: 'border-sky-200', sectionBg: 'bg-sky-50' },
 };
 
 const HomePage = () => {

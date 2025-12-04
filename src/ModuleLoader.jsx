@@ -81,6 +81,18 @@ const moduleMap = {
     'level-5-passive-voice-advanced': lazy(() => import('./pages/Level5PassiveVoiceAdvancedLesson')),
     'level-5-reported-speech-advanced': lazy(() => import('./pages/Level5ReportedSpeechAdvancedLesson')),
     'level-5-inversion': lazy(() => import('./pages/Level5InversionLesson')),
+    'level-5-cleft-sentences': lazy(() => import('./pages/Level5CleftSentencesLesson')),
+    // Level 6: Advanced / Mastery
+    'level-6-advanced-aspects': lazy(() => import('./pages/Level6AdvancedAspectsLesson')),
+    'level-6-subjunctive': lazy(() => import('./pages/Level6SubjunctiveMoodLesson')),
+    'level-6-inversion-advanced': lazy(() => import('./pages/Level6InversionAdvancedLesson')),
+    'level-6-ellipsis-substitution': lazy(() => import('./pages/Level6EllipsisSubstitutionLesson')),
+    'level-6-fronting-emphasis': lazy(() => import('./pages/Level6FrontingEmphasisLesson')),
+    'level-6-advanced-conditionals': lazy(() => import('./pages/Level6AdvancedConditionalsLesson')),
+    'level-6-advanced-phrasal-verbs': lazy(() => import('./pages/Level6AdvancedPhrasalVerbsLesson')),
+    'level-6-advanced-conjunctions': lazy(() => import('./pages/Level6AdvancedConjunctionsLesson')),
+    'level-6-parallelism': lazy(() => import('./pages/Level6ParallelismLesson')),
+    'level-6-stylistic-grammar': lazy(() => import('./pages/Level6StylisticGrammarLesson')),
 };
 
 const ModuleLoader = () => {
